@@ -1,0 +1,49 @@
+﻿@model Economy.Models.UserModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_RegisterAndLogin.cshtml";
+}
+
+<!-- Sing in  Form -->
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="~/Assets/RegisterAndLogin/images/signin-image.jpg" alt="sing up image"></figure>
+                @*<a href="#" class="signup-image-link">Create an account</a>*@
+                @Html.ActionLink("Create an account", "Register", null, new { @class = "signup-image-link" })
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">Log in</h2>
+                @using (Html.BeginForm("Login", "RegisterAndLogin", FormMethod.Post, new { @class = "register-form", @id = "login-form" }))
+                {
+                    <div class="form-group">
+                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        @Html.TextBoxFor(Model => Model.Email, new { @name = "your_name", @id = "your_name", @placeholder = "your email..." })
+                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @style="color:red"})
+                    </div>
+                    <div class="form-group">
+                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                        @Html.PasswordFor(Model => Model.Password, new { @name = "your_pass", @id = "your_pass", @placeholder = "your password..." })
+                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @style="color:red"})
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                    </div>
+                }
+
+                <div class="social-login">
+                    <span class="social-label">Or login with</span>
+                    <ul class="socials">
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

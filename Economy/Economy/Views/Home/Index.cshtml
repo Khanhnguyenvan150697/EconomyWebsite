@@ -1,0 +1,23 @@
+﻿@using Economy.Common
+@model UserLogin
+@{
+    Layout = null;
+}
+@{ 
+    var user = ViewBag.Session as UserLogin;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @Html.ActionLink("Login", "Login", "RegisterAndLogin")
+    <br />
+    @Html.ActionLink("Register", "Register", "RegisterAndLogin")
+
+    Hello @user.UserName, @user.UserID
+</body>
+</html>

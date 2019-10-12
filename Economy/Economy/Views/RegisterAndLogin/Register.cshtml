@@ -1,0 +1,47 @@
+﻿@model Model.EF.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_RegisterAndLogin.cshtml";
+}
+
+<!-- Sign up form -->
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                @using (Html.BeginForm("Register", "RegisterAndLogin", FormMethod.Post, new { @class = "register-form", @id = "register-form" }))
+                {
+                    <div class="form-group">
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        @Html.TextBoxFor(model => model.UserName, new { @id="name", @placeholder="Your username...", @name="name"})
+                        @Html.ValidationMessageFor(model => model.UserName, null, new { @style="color:red"})
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        @Html.TextBoxFor(model => model.Email, new { @id = "email", @placeholder = "Your email...", @name = "email" })
+                        @Html.ValidationMessageFor(model => model.Email, null, new { @style="color:red"})
+                    </div>
+                    <div class="form-group">
+                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                        @Html.PasswordFor(model => model.Password, new { @id = "pass", @placeholder = "Your password...", @name = "pass" })
+                        @Html.ValidationMessageFor(model => model.Password, null, new { @style="color:red"})
+                    </div>
+                    @*<div class="form-group">
+                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                    </div>*@
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                    </div>
+                }
+            </div>
+            <div class="signup-image">
+                <figure><img src="~/Assets/RegisterAndLogin/images/signup-image.jpg" alt="sing up image"></figure>
+                @*<a href="#" class="signup-image-link">I am already member</a>*@
+                @Html.ActionLink("I am already member", "Login", null, new { @class = "signup-image-link" })
+            </div>
+        </div>
+    </div>
+</section>
