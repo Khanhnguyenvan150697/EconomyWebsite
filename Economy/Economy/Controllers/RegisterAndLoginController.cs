@@ -58,6 +58,8 @@ namespace Economy.Controllers
                     var _user = GetUserByID(user.Email);
                     userSession.UserID = _user.ID;
                     userSession.UserName = _user.UserName;
+
+                    //Add 2 object into Session.Add();
                     Session.Add(CommonConstant.USER_SESSION, userSession);
 
                     return RedirectToAction("Index","Home");
@@ -95,6 +97,13 @@ namespace Economy.Controllers
             var _user = db.Users.FirstOrDefault(x => x.Email == email);
             return _user;
             
+        }
+
+        // Log out application
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index","Home");
         }
     }
 }

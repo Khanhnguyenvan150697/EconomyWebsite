@@ -12,7 +12,7 @@ namespace Model.EF
         public long ID { get; set; }
 
         [StringLength(100)]
-        [Required(ErrorMessage ="Enter your username, please!")]
+        [Required(ErrorMessage = "Enter your username, please!")]
         public string UserName { get; set; }
 
         [StringLength(100)]
