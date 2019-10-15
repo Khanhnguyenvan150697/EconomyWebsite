@@ -1,0 +1,11 @@
+﻿@using Economy.Common.Admin;
+@model AdminLogin
+
+@{ 
+    var _adminName = ViewBag.Session as AdminLogin;
+}
+<div class="logo">
+    <a href="@Url.Action("HomeAdmin","HomeAdmin")" class="simple-text logo-normal">
+        <span style="font-weight:600">@_adminName.AdminName</span>
+    </a>
+</div>

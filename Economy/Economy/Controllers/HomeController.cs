@@ -13,7 +13,6 @@ namespace Economy.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Session = Session[CommonConstant.USER_SESSION];
             return View();
         }
     }
