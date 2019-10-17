@@ -37,7 +37,11 @@ namespace Model.EF
 
         public bool? Quantity { get; set; }
 
-        public long? CategoryID { get; set; }
+        [StringLength(150)]
+        public string BrandName { get; set; }
+
+        [StringLength(150)]
+        public string CategoryName { get; set; }
 
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }

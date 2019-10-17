@@ -14,6 +14,7 @@ namespace Model.EF
 
         public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Content> Contents { get; set; }

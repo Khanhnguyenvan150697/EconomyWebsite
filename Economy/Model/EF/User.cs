@@ -12,11 +12,9 @@ namespace Model.EF
         public long ID { get; set; }
 
         [StringLength(100)]
-        [Required(ErrorMessage = "Enter your username, please!")]
         public string UserName { get; set; }
 
         [StringLength(100)]
-        [Required(ErrorMessage = "Enter your password, please!")]
         public string Password { get; set; }
 
         [StringLength(100)]
@@ -29,7 +27,6 @@ namespace Model.EF
         public string Address { get; set; }
 
         [StringLength(50)]
-        [Required(ErrorMessage = "Enter your email, please!")]
         public string Email { get; set; }
 
         [StringLength(50)]

@@ -1,0 +1,116 @@
+﻿@using Economy.Models;
+@model AddNewProduct
+@{
+    @*var drop = ViewBag.Brand;
+        var cate = ViewBag.Category;*@
+}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Create new product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Create new</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title">Add new product</h4>
+                                    <p class="card-category">E-Shopper</p>
+                                </div>
+                                <div class="card-body">
+                                    @using (Html.BeginForm("PopupModal", "Partial", FormMethod.Post))
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Product name</label>
+                                                    @Html.TextBoxFor(Model => Model.ProductName, null, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(Model => Model.ProductName)
+                                                </div>
+                                            </div>
+                                            @if (ViewBag.Brand != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                                        </div>
+                                                        @Html.DropDownListFor(Model => Model.BrandName, ViewBag.Brand as SelectList, "", new { @class = "custom-select col-md-12" })
+                                                        @Html.ValidationMessageFor(Model => Model.BrandName)
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (ViewBag.Cates != null)
+                                            {
+                                                <div class="col-md-4">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                                                        </div>
+                                                        @Html.DropDownListFor(Model => Model.CategoryName, ViewBag.Cates as SelectList, "", new { @class = "custom-select col-md-12" })
+                                                        @Html.ValidationMessageFor(Model => Model.CategoryName)
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Price</label>
+                                                    @Html.TextBoxFor(Model => Model.Price, null, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(Model => Model.Price)
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Promotion price</label>
+                                                    @Html.TextBoxFor(Model => Model.PromotionPrice, null, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(Model => Model.PromotionPrice)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="bmd-label-floating">Quantity</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="bmd-label-floating">Image</label>
+                                                <input type="button" value="Browse Server" onclick="BrowseServer();" class="controls" />
+                                                <input id="insertImage" name="FilePath" type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <div class="form-group">
+                                                        @Html.TextAreaFor(Model => Model.Description, new { @class = "form-control", @id ="descriptionProduct" })
+                                                        @Html.ValidationMessageFor(Model => Model.Description)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right">Add</button>
+                                        <div class="clearfix"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

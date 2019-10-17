@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model.EF;
+using Economy.Models;
 
 namespace Economy.Controllers
 {
@@ -11,7 +13,12 @@ namespace Economy.Controllers
         // GET: HomeAdmin
         public ActionResult HomeAdmin()
         {
-            return View();
+            EconomyDbContext db = null;
+            db = new EconomyDbContext();
+
+            var item = db.Products.ToList();
+
+            return View(item);
         }
     }
 }
