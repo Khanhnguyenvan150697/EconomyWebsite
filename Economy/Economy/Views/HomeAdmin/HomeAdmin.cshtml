@@ -1,15 +1,19 @@
-﻿
+﻿@using Model.EF;
+@model List<Product>
 @{
     ViewBag.Title = "HomeAdmin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
+@Html.Action("PopupModal", "Partial")
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title " style="font-weight:600">DANH SÁCH SẢN PHẨM</h4>
-                <p class="card-category">E-Shopper</p>
+                <p class="card-category">E-shopper</p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -19,18 +23,23 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Brand</th>
-                        <th>Salary</th>
-                        <th>Status</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th></th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Dakota Rice</td>
-                                <td>Niger</td>
-                                <td>Oud-Turnhout</td>
-                                <td class="text-primary">$36,738</td>
-                                <td class="btn btn-success">Active</td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Image</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.BrandName</td>
+                                    <td>@item.CategoryName</td>
+                                    <td class="text-primary">@item.Price.Value.ToString("N0") VNĐ</td>
+                                    <td>@Html.Action("Edit", "Partial") | <a href="#">Delete</a></td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -38,3 +47,4 @@
         </div>
     </div>
 </div>
+
