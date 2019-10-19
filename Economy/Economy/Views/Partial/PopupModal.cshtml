@@ -10,7 +10,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" >
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,8 +87,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="bmd-label-floating">Image</label>
-                                                <input type="button" value="Browse Server" onclick="BrowseServer();" class="controls" />
-                                                <input id="insertImage" name="FilePath" type="text" class="form-control" />
+                                                <input type="button" value="Select Image" id="selectImg" class="controls" />
+                                                <input id="linkUrlImg" type="text" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -96,7 +96,7 @@
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <div class="form-group">
-                                                        @Html.TextAreaFor(Model => Model.Description, new { @class = "form-control", @id ="descriptionProduct" })
+                                                        @Html.TextAreaFor(Model => Model.Description, new { @id = "txtNoidung" })
                                                         @Html.ValidationMessageFor(Model => Model.Description)
                                                     </div>
                                                 </div>
@@ -114,3 +114,5 @@
         </div>
     </div>
 </div>
+
+
