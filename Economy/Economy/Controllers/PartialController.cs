@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Economy.Common.Admin;
 using Model.EF;
 using Economy.Models;
+using System.Data.Entity;
 
 namespace Economy.Controllers
 {
@@ -37,6 +38,7 @@ namespace Economy.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult PopupModal(AddNewProduct prod)
         {
             EconomyDbContext db = null;
@@ -56,6 +58,7 @@ namespace Economy.Controllers
                     CategoryName = prod.CategoryName,
                     Price = prod.Price,
                     PromotionPrice = prod.PromotionPrice,
+                    Image = prod.Image,
                     Description = prod.Description
                 };
 
@@ -88,16 +91,6 @@ namespace Economy.Controllers
 
             List<Category> cates = db.Categories.ToList();
             return cates;
-        }
-
-        public ActionResult Edit()
-        {
-            EconomyDbContext db = null;
-            db = new EconomyDbContext();
-
-            ViewBag.Brand = new SelectList(GetBrand(), "Name", "Name");
-            ViewBag.Cates = new SelectList(GetCate(), "Name", "Name");
-            return PartialView();
         }
     }
 }

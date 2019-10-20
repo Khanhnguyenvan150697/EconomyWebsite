@@ -1338,6 +1338,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AddOrEditProduct.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\RegisterAndLogin\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
@@ -1727,7 +1728,6 @@
     <Content Include="Views\Products\CreateNewProduct.cshtml" />
     <Content Include="Views\Partial\PopupModal.cshtml" />
     <Content Include="Views\PopupModal.cshtml" />
-    <Content Include="Views\Partial\Edit.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>

@@ -29,7 +29,7 @@
                                     <p class="card-category">E-Shopper</p>
                                 </div>
                                 <div class="card-body">
-                                    @using (Html.BeginForm("PopupModal", "Partial", FormMethod.Post))
+                                    @using (Html.BeginForm("PopupModal", "Partial", FormMethod.Post, new { enctype="multipart/form-data"}))
                                     {
                                         <div class="row">
                                             <div class="col-md-4">
@@ -88,7 +88,8 @@
                                             <div class="col-md-6">
                                                 <label class="bmd-label-floating">Image</label>
                                                 <input type="button" value="Select Image" id="selectImg" class="controls" />
-                                                <input id="linkUrlImg" type="text" class="form-control" />
+                                                @*<input id="linkUrlImg" type="text" class="form-control" />*@
+                                                @Html.TextBoxFor(Model => Model.Image, new { @class="form-control", @id="linkUrlImg"})
                                             </div>
                                         </div>
                                         <div class="row">
@@ -102,7 +103,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Add</button>
+                                        <button type="submit" class="btn btn-primary pull-right" id="addProd">Add</button>
                                         <div class="clearfix"></div>
                                     }
                                 </div>
@@ -114,5 +115,4 @@
         </div>
     </div>
 </div>
-
 

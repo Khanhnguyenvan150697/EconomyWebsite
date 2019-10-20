@@ -32,12 +32,12 @@
                             {
                                 <tr>
                                     <td>@item.ID</td>
-                                    <td>@item.Image</td>
+                                    <td><img src="@item.Image" alt="@item.Name" width="100px" /></td>
                                     <td>@item.Name</td>
                                     <td>@item.BrandName</td>
                                     <td>@item.CategoryName</td>
                                     <td class="text-primary">@item.Price.Value.ToString("N0") VNĐ</td>
-                                    <td>@Html.Action("Edit", "Partial") | <a href="#">Delete</a></td>
+                                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
                                 </tr>
                             }
                         </tbody>
