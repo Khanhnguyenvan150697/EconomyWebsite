@@ -1,0 +1,101 @@
+﻿@using Economy.Models;
+@model AddNewProduct
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add new product</h4>
+                        <p class="card-category">E-Shopper</p>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Product name</label>
+                                        @Html.TextBoxFor(Model => Model.ProductName, null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(Model => Model.ProductName, null, new { @style="color:red"})
+                                    </div>
+                                </div>
+                                @if (ViewBag.Brand != null)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                            </div>
+                                            @Html.DropDownListFor(Model => Model.BrandName, ViewBag.Brand as SelectList, "", new { @class = "custom-select col-md-12" })
+                                            @Html.ValidationMessageFor(Model => Model.BrandName, null, new { @style="color:red"})
+                                        </div>
+                                    </div>
+                                }
+                                @if (ViewBag.Cates != null)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                                            </div>
+                                            @Html.DropDownListFor(Model => Model.CategoryName, ViewBag.Cates as SelectList, "", new { @class = "custom-select col-md-12" })
+                                            @Html.ValidationMessageFor(Model => Model.CategoryName, null, new { @style="color:red"})
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Price</label>
+                                        @Html.TextBoxFor(Model => Model.Price, null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(Model => Model.Price, null, new { @style="color:red"})
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Promotion price</label>
+                                        @Html.TextBoxFor(Model => Model.PromotionPrice, null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(Model => Model.PromotionPrice, null, new { @style="color:red"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="bmd-label-floating">Quantity</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="bmd-label-floating">Image</label>
+                                    <input type="button" value="Select Image" id="selectImg" class="controls" />
+                                    @*<input id="linkUrlImg" type="text" class="form-control" />*@
+                                    @Html.TextBoxFor(Model => Model.Image, new { @class = "form-control", @id = "linkUrlImg" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(Model => Model.Description, new { @id = "txtNoidung" })
+                                            @Html.ValidationMessageFor(Model => Model.Description, null, new { @style="color:red"})
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right" id="addProd">Add</button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
