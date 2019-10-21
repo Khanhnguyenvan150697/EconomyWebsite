@@ -6,7 +6,7 @@
 }
 
 
-@Html.Action("PopupModal", "Partial")
+<a class="btn btn-primary" href="@Url.Action("Create","Products")">Create new product</a>
 
 <div class="row">
     <div class="col-md-12">
@@ -37,7 +37,7 @@
                                     <td>@item.BrandName</td>
                                     <td>@item.CategoryName</td>
                                     <td class="text-primary">@item.Price.Value.ToString("N0") VNĐ</td>
-                                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                                    <td>@Html.ActionLink("Edit", "Edit","Products", new { @id=item.ID}, new { @class="btn btn-success", @style="padding:12px 20px"}) @Html.ActionLink("Delete","Delete","Products",new { @id=item.ID},new { onclick="return confirm('Bạn có muốn xóa sản phẩm?')", @class="btn btn-warning", @style="padding:12px 20px"})</td>
                                 </tr>
                             }
                         </tbody>
@@ -47,3 +47,4 @@
         </div>
     </div>
 </div>
+
