@@ -1,5 +1,7 @@
-﻿@using Model.EF;
-@model List<Product>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Model.EF;
+@model IPagedList<Product>
 @{
     ViewBag.Title = "HomeAdmin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -47,4 +49,6 @@
         </div>
     </div>
 </div>
-
+<p>
+    @Html.PagedListPager(Model, page => Url.Action("HomeAdmin", new { page = page}), PagedListRenderOptions.PageNumbersOnly)
+</p>
