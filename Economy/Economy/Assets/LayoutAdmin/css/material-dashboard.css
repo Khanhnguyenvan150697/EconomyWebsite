@@ -4831,7 +4831,7 @@ tbody.collapse.show {
 
 .pagination {
   display: flex;
-  padding-left: 0;
+  padding-left: 50%;
   list-style: none;
   border-radius: 0.25rem;
 }
@@ -4839,7 +4839,7 @@ tbody.collapse.show {
 .page-link {
   position: relative;
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: 10px 10px;
   margin-left: 0;
   line-height: 1.25;
   color: #2196f3;
