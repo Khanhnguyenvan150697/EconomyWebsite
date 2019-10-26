@@ -22,7 +22,7 @@ namespace Economy.Controllers
         }
         public ActionResult DisplayAdminName()
         {
-            ViewBag.Session = Session[Common.Admin.CommonConstant.ADMIN_SESSION];
+            ViewBag.Session = Session[Common.Admin.CommonConstantAdmin.ADMIN_SESSION];
             return PartialView();
         }
     

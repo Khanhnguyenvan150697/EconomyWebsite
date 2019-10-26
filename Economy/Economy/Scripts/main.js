@@ -2,7 +2,6 @@
     loadData();
 });
 
-
 function loadData() {
     //Load product
     $.ajax({
@@ -41,7 +40,6 @@ function Delete(elem) {
         success: function (result) {
             loadData();
         }
-        
     });
 }
 

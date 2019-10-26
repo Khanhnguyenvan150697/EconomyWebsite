@@ -8,5 +8,6 @@ namespace Economy.Common
     public static class CommonConstant
     {
         public static string USER_SESSION = "USER_SESSION";
+
     }
 }

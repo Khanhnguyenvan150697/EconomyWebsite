@@ -140,9 +140,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Admin\AdminLogin.cs" />
-    <Compile Include="Common\Admin\CommonConstant.cs" />
+    <Compile Include="Common\Admin\CommonConstantAdmin.cs" />
     <Compile Include="Common\CommonConstant.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1712,6 +1713,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\twbs-pagination.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1741,6 +1743,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\photos\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -15,6 +15,7 @@ namespace Economy.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            
             return View();
         }
 
@@ -30,7 +31,7 @@ namespace Economy.Controllers
                     adminSession.IDAdmin = _ad.IDAdmin;
                     adminSession.AdminName = _ad.AdminName;
 
-                    Session.Add(Economy.Common.Admin.CommonConstant.ADMIN_SESSION, adminSession);
+                    Session.Add(Economy.Common.Admin.CommonConstantAdmin.ADMIN_SESSION, adminSession);
 
                     return RedirectToAction("HomeAdmin","HomeAdmin");
                 }

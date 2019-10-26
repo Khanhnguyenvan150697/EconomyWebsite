@@ -10,25 +10,22 @@ using PagedList.Mvc;
 
 namespace Economy.Controllers
 {
-    public class HomeAdminController : Controller
+    public class HomeAdminController : BaseController
     {
         EconomyDbContext db = new EconomyDbContext();
         // GET: HomeAdmin
-        public ActionResult HomeAdmin(int? page)
+        public ActionResult HomeAdmin()
         {
-            const int PAGESIZE = 5;
-            int pageNumber = (page ?? 1);
-
-            var item = db.Products.OrderBy(x => x.ID).ToPagedList(pageNumber, PAGESIZE);
-
-            return View(item);
+            
+            var lstItem = db.Products.ToList();
+            return View(lstItem);
         }
 
         [HttpGet]
-        public JsonResult ShowData(int page, int pageSize)
+        public JsonResult ShowData()
         {
-            var _prod = db.Products.ToList();
-            return Json(_prod, JsonRequestBehavior.AllowGet);
+            var lstItem = db.Products.ToList();
+            return Json(lstItem, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
