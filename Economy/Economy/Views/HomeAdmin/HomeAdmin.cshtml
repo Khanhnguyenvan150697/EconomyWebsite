@@ -8,7 +8,7 @@
 }
 
 
-<a class="btn btn-primary" href="@Url.Action("Create","Products")">Create new product</a>
+<a class="btn btn-primary" href="@Url.Action("Create","HomeAdmin")">Create new product</a>
 
 <div class="row">
     <div class="col-md-12">
@@ -21,27 +21,18 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
-                        <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th></th>
+                            <th>ID</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Thương hiệu</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Tình trạng</th>
+                            <th></th>
                         </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.ID</td>
-                                    <td><img src="@item.Image" alt="@item.Name" width="100px" /></td>
-                                    <td>@item.Name</td>
-                                    <td>@item.BrandName</td>
-                                    <td>@item.CategoryName</td>
-                                    <td class="text-primary">@item.Price.Value.ToString("N0") VNĐ</td>
-                                    <td>@Html.ActionLink("Edit", "Edit","Products", new { @id=item.ID}, new { @class="btn btn-success", @style="padding:12px 20px"}) @Html.ActionLink("Delete","Delete","Products",new { @id=item.ID},new { onclick="return confirm('Bạn có muốn xóa sản phẩm?')", @class="btn btn-warning", @style="padding:12px 20px"})</td>
-                                </tr>
-                            }
+                        <tbody id="tblProducts">
+
                         </tbody>
                     </table>
                 </div>
@@ -49,6 +40,3 @@
         </div>
     </div>
 </div>
-<p>
-    @Html.PagedListPager(Model, page => Url.Action("HomeAdmin", new { page = page}), PagedListRenderOptions.PageNumbersOnly)
-</p>

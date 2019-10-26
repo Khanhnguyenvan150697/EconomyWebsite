@@ -12945,11 +12945,7 @@ select.form-control {
   top: -10px;
 }
 
-textarea {
-  height: auto !important;
-  resize: none;
-  line-height: 1.428571 !important;
-}
+
 
 .form-group input[type=file] {
   opacity: 0;
@@ -18826,4 +18822,11 @@ Copyright (c) 2015 Daniel Eden
 .navbar-nav .nav-item:hover {
     background-color: #ffa500;
     transition: 1s;
+}
+
+.table .text-primary th{
+    text-align: center;
+}
+.table tbody tr td {
+    text-align: center;
 }

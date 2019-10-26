@@ -148,7 +148,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginAdminController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RegisterAndLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1711,6 +1710,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1730,14 +1730,13 @@
     <Content Include="Views\Shared\_LoginAdmin.cshtml" />
     <Content Include="Views\LoginAdmin\Login.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\HomeAdmin\HomeAdmin.cshtml" />
     <Content Include="Views\Partial\DisplayAdminName.cshtml" />
-    <Content Include="Views\Products\CreateNewProduct.cshtml" />
     <Content Include="Views\PopupModal.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\HomeAdmin\HomeAdmin.cshtml" />
+    <Content Include="Views\HomeAdmin\Create.cshtml" />
+    <Content Include="Views\HomeAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

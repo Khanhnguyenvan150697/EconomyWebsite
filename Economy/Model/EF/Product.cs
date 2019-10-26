@@ -20,7 +20,6 @@ namespace Model.EF
         [StringLength(250)]
         public string MetaTitle { get; set; }
 
-        [StringLength(250)]
         public string Description { get; set; }
 
         [StringLength(250)]
@@ -35,7 +34,7 @@ namespace Model.EF
 
         public bool? IncludedVAT { get; set; }
 
-        public bool? Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [StringLength(150)]
         public string BrandName { get; set; }
@@ -43,7 +42,7 @@ namespace Model.EF
         [StringLength(150)]
         public string CategoryName { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [StringLength(500)]
         public string Detail { get; set; }
 
         public int? Warranty { get; set; }
