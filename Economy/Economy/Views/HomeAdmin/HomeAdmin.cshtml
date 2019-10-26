@@ -1,7 +1,6 @@
-﻿@using PagedList;
-@using PagedList.Mvc;
+﻿
 @using Model.EF;
-@model IPagedList<Product>
+@model List<Product>
 @{
     ViewBag.Title = "HomeAdmin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -38,5 +37,10 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div id="pagination" class="col-md-12 pagination">
+
     </div>
 </div>
