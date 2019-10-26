@@ -1,5 +1,5 @@
-﻿@using Model.EF;
-@model Product
+﻿@using Economy.Models;
+@model AddNewProduct
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,18 +11,19 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Edit product</h4>
+                        <h4 class="card-title">Add new product</h4>
                         <p class="card-category">E-Shopper</p>
                     </div>
                     <div class="card-body">
-                        @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                        @using (Html.BeginForm("Create", "HomeAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Product name</label>
-                                        @Html.TextBoxFor(Model => Model.Name, null, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(Model => Model.Name, null, new { @style = "color:red" })
+                                        @Html.TextBoxFor(Model => Model.ProductName, null, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(Model => Model.ProductName, null, new { @style = "color:red" })
                                     </div>
                                 </div>
                                 @if (ViewBag.Brand != null)
@@ -67,15 +68,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <label class="bmd-label-floating">Quantity</label>
-                                    <input type="text" class="form-control">
+                                    @Html.TextBoxFor(Model => Model.Quantity, null, new { @class = "form-control", @type="number" })
+                                    @Html.ValidationMessageFor(Model => Model.Quantity, null, new { @style = "color:red" })
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label class="bmd-label-floating">Image</label>
                                     <input type="button" value="Select Image" id="selectImg" class="controls" />
-                                    @*<input id="linkUrlImg" type="text" class="form-control" />*@
                                     @Html.TextBoxFor(Model => Model.Image, new { @class = "form-control", @id = "linkUrlImg" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="bmd-label-floating">Detail</label>
+                                    @Html.TextAreaFor(Model => Model.Detail, new { @class = "form-control", @id = "linkUrlImg" })
                                 </div>
                             </div>
                             <div class="row">
@@ -89,7 +94,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right" id="addProd" onclick="return confirm('Are you sure ?')">Finish</button>
+                            <button type="submit" class="btn btn-primary pull-right" id="addProd" onclick="return confirm('Thêm sản phẩm thành công');">Add</button>
                             <div class="clearfix"></div>
                         }
                     </div>
@@ -98,3 +103,4 @@
         </div>
     </div>
 </div>
+
