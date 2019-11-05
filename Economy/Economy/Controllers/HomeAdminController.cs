@@ -57,8 +57,9 @@ namespace Economy.Controllers
                 };
                 db.Products.Add(item);
                 db.SaveChanges();
+                return RedirectToAction("HomeAdmin");
             }
-            return RedirectToAction("HomeAdmin");
+            return View();
         }
 
         //Get List brands
@@ -77,6 +78,7 @@ namespace Economy.Controllers
             return cates;
         }
 
+        //Edit product
         //Edit product
         [HttpGet]
         public ActionResult Edit(long? id)
@@ -111,6 +113,7 @@ namespace Economy.Controllers
 
             return View();
         }
+
         [HttpPost]
         public JsonResult Delete(long? id)
         {
@@ -123,6 +126,18 @@ namespace Economy.Controllers
                 result = "Xóa thành công";
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        // Product detail
+        [HttpGet]
+        public JsonResult Detail(long? id)
+        {
+            Product prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
+            if(prod != null)
+            {
+                return Json(prod, JsonRequestBehavior.AllowGet);
+            }
+            return Json(null);
         }
     }
 }

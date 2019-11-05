@@ -155,6 +155,7 @@
     </Compile>
     <Compile Include="Models\AddNewProduct.cs" />
     <Compile Include="Models\AdminAccModel.cs" />
+    <Compile Include="Models\AdminDetailProduct.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1739,11 +1740,15 @@
     <Content Include="Views\HomeAdmin\HomeAdmin.cshtml" />
     <Content Include="Views\HomeAdmin\Create.cshtml" />
     <Content Include="Views\HomeAdmin\Edit.cshtml" />
+    <Content Include="Views\Home\CategoryTab.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\ProductByCategory.cshtml" />
+    <Content Include="Views\Home\Brand.cshtml" />
+    <Content Include="Views\Home\ProductByBrand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\photos\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

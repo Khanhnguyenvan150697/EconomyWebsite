@@ -15,7 +15,7 @@ function loadData() {
                 html += '<tr>';
                 html += '<td class="idProd">' + item.ID + '</td>';
                 html += '<td><img src="' + item.Image + '" alt="' + item.Name + '" width="100px" /></td>';
-                html += '<td>' + item.Name + '</td>';
+                html += '<td><a href="#" class="ProdName" data-id="' + item.ID + '" data-toggle="modal" data-target="#myModal" onclick="Detail(this);">' + item.Name + '</a></td>';
                 html += '<td>' + item.BrandName + '</td>';
                 html += '<td>' + item.CategoryName + '</td>';
                 html += '<td class="text-primary">' + item.Price + ' VNĐ</td>';
@@ -32,6 +32,7 @@ function loadData() {
     });
 }
 
+//Delete Product
 function Delete(elem) {
     var getId = $(elem).data('id'); 
     $.ajax({
@@ -42,6 +43,19 @@ function Delete(elem) {
         }
     });
 }
+
+//Product detail
+function Detail(elem) {
+    var getId = $(elem).data('id');
+    $.ajax({
+        type: 'GET',
+        url: '/HomeAdmin/Detail/' + getId + '',
+        success: function (result) {
+            
+        }
+    });
+}
+
 
 //Search dynamically
 $('#txtSearch').on('keyup', function () {

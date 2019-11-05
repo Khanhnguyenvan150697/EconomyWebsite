@@ -76,10 +76,12 @@
                                     <label class="bmd-label-floating">Image</label>
                                     <input type="button" value="Select Image" id="selectImg" class="controls" />
                                     @Html.TextBoxFor(Model => Model.Image, new { @class = "form-control", @id = "linkUrlImg" })
+                                    @Html.ValidationMessageFor(Model => Model.Image, null, new { @style = "color:red" })
                                 </div>
                                 <div class="col-md-6">
                                     <label class="bmd-label-floating">Detail</label>
                                     @Html.TextAreaFor(Model => Model.Detail, new { @class = "form-control", @id = "linkUrlImg" })
+                                    @Html.ValidationMessageFor(Model => Model.Detail, null, new { @style = "color:red" })
                                 </div>
                             </div>
                             <div class="row">
