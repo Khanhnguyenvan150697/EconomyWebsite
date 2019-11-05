@@ -1,0 +1,138 @@
+﻿@using Model.EF;
+@model List<Product>
+@{ 
+    var getAllCamera =ViewBag.Camera as List<Product>;
+    var getAllLens = ViewBag.Lens as List<Product>;
+    var getAllTripod = ViewBag.Tripod as List<Product>;
+    var getAllApple = ViewBag.Apple as List<Product>;
+    var getOther = ViewBag.Other as List<Product>;
+}
+
+
+
+<h2 class="title text-center">Sản phẩm mới nhất</h2>
+<div class="category-tab">
+    <!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#mayanh" data-toggle="tab">Máy ảnh</a></li>
+            <li><a href="#ongkinh" data-toggle="tab">Ống kính</a></li>
+            <li><a href="#tripod" data-toggle="tab">Tripod</a></li>
+            <li><a href="#apple" data-toggle="tab">Apple</a></li>
+            <li><a href="#other" data-toggle="tab">Khác</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="mayanh">
+            @foreach (var item in getAllCamera)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <div class="imgShow">
+                                    <img src="@item.Image" alt="" />
+                                </div>
+                                <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
+                                <p>@item.Name</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="ongkinh">
+            @foreach (var item in getAllLens)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <div class="imgShow">
+                                    <img src="@item.Image" alt="" />
+                                </div>
+                                <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
+                                <p>@item.Name</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="tripod">
+            @foreach (var item in getAllTripod)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <div class="imgShow">
+                                    <img src="@item.Image" alt="" />
+                                </div>
+                                <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
+                                <p>@item.Name</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="apple">
+            @foreach (var item in getAllApple)
+            {
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <div class="imgShow">
+                                    <img src="@item.Image" alt="" />
+                                </div>
+                                <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
+                                <p>@item.Name</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="tab-pane fade" id="other">
+            @if (getOther.Count == 0)
+            {
+                <h3 style="color: red;">Không có sản phẩm</h3>
+            }
+            else
+            {
+                foreach (var item in getOther)
+                {
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <div class="imgShow">
+                                        <img src="@item.Image" alt="" />
+                                    </div>
+                                    <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
+                                    <p>@item.Name</p>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div><!--/category-tab-->

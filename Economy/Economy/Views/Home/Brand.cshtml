@@ -1,0 +1,17 @@
+﻿@using Model.EF;
+@{ 
+    var brands = ViewBag.Brand as List<Brand>;
+}
+
+<div class="brands_products">
+    <!--brands_products-->
+    <h2>Thương hiệu</h2>
+    <div class="brands-name">
+        <ul class="nav nav-pills nav-stacked">
+            @foreach (var item in brands)
+            {
+                <li><a href="@Url.Action("ProductByBrand","Home",new { @brand=item.Name})"> <span class="pull-right"></span>@item.Name</a></li>
+            }
+        </ul>
+    </div>
+</div><!--/brands_products-->
