@@ -62,5 +62,12 @@ namespace Model.Dao
             List<Product> prods = db.Products.Where(x => x.BrandName == brand).ToList();
             return prods;
         }
+
+        //get product by id
+        public Product getProductById(long? id)
+        {
+            Product prod = db.Products.Where(x => x.ID == id).FirstOrDefault();
+            return prod;
+        }
     }
 }

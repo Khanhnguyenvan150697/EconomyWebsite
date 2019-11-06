@@ -148,12 +148,12 @@
                                         @if (item.Quantity > 0)
                                         {
                                             <li><a href="#" style="color: green;"><i class="fa fa-plus-square"></i>Còn hàng (@item.Quantity)</a></li>
-                                            <li class="txtChiTietSP"><a class="txtChiTietSP" href="#" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
+                                            <li class="txtChiTietSP"><a class="txtChiTietSP" href="@Url.Action("Detail","Product",new { @id=item.ID})" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
                                         }
                                         else
                                         {
                                             <li><a href="#" style="color: red;"><i class="fa fa-plus-square"></i>Hết hàng</a></li>
-                                            <li class="txtChiTietSP"><a href="#" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
+                                            <li class="txtChiTietSP"><a href="@Url.Action("Detail","Product",new { @id=item.ID})" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
                                         }
 
                                     </ul>
@@ -166,6 +166,5 @@
             </div>
         </div>
         </div>
-    </div>
 </section>
 
