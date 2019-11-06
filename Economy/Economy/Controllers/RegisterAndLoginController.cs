@@ -58,6 +58,7 @@ namespace Economy.Controllers
                     var _user = GetUserByID(user.Email);
                     userSession.UserID = _user.ID;
                     userSession.UserName = _user.UserName;
+                    userSession.UserEmail = _user.Email;
 
                     //Add 2 object into Session.Add();
                     Session.Add(CommonConstant.USER_SESSION, userSession);

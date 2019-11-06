@@ -2,6 +2,7 @@
     @{ 
         var category = ViewBag.Category as List<Category>;
     }
+
 <h2>Danh mục</h2>
 <div class="panel-group category-products">
     <!--category-productsr-->
@@ -9,7 +10,7 @@
     {
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title"><a href="@Url.Action("ProductByCategory","Home",new { @cate=item.Name})">@item.Name</a></h4>
+                <h4 class="panel-title"><a class="txtCate" href="@Url.Action("ProductByCategory","Home",new { @cate=item.Name})">@item.Name</a></h4>
             </div>
         </div>
     }
