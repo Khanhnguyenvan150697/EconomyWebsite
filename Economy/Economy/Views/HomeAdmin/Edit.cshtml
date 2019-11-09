@@ -72,18 +72,48 @@
                                     @Html.TextBoxFor(Model => Model.Quantity, null, new { @class = "form-control", @type = "number" })
                                     @Html.ValidationMessageFor(Model => Model.Quantity, null, new { @style = "color:red" })
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-10">
                                     <label class="bmd-label-floating">Image</label>
-                                    <input type="button" value="Select Image" id="selectImg" class="controls" />
+                                    <input type="button" value="Select Image" id="selectImg" class="controls" multiple />
                                     @Html.TextBoxFor(Model => Model.Image, new { @class = "form-control", @id = "linkUrlImg" })
-                                    @Html.ValidationMessageFor(Model => Model.Image, null, new { @style = "color:red" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="bmd-label-floating">Detail</label>
-                                    @Html.TextAreaFor(Model => Model.Detail, new { @class = "form-control", @id = "linkUrlImg" })
-                                    @Html.ValidationMessageFor(Model => Model.Detail, null, new { @style = "color:red" })
                                 </div>
                             </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="bmd-label-floating">Image1</label>
+                                    <input type="button" value="img1" id="selectImg1" class="controls" name="file" />
+                                    @Html.TextBoxFor(Model => Model.MoreImg1, new { @class = "form-control", @id = "linkUrlImg1" })
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="bmd-label-floating">Image2</label>
+                                    <input type="button" value="img2" id="selectImg2" class="controls" name="file" />
+                                    @Html.TextBoxFor(Model => Model.MoreImg2, new { @class = "form-control", @id = "linkUrlImg2" })
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="bmd-label-floating">Image3</label>
+                                    <input type="button" value="img3" id="selectImg3" class="controls" name="file" />
+                                    @Html.TextBoxFor(Model => Model.MoreImg3, new { @class = "form-control", @id = "linkUrlImg3" })
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="bmd-label-floating">Image4</label>
+                                    <input type="button" value="img4" id="selectImg4" class="controls" name="file" />
+                                    @Html.TextBoxFor(Model => Model.MoreImg4, new { @class = "form-control", @id = "linkUrlImg4" })
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="bmd-label-floating">Image5</label>
+                                    <input type="button" value="img5" id="selectImg5" class="controls" name="file" />
+                                    @Html.TextBoxFor(Model => Model.MoreImg5, new { @class = "form-control", @id = "linkUrlImg5" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="bmd-label-floating">Detail</label>
+                                    @Html.TextAreaFor(Model => Model.Detail, new { @class = "form-control", @id = "txtDetail" })
+                                </div>
+                            </div>
+                            <br />
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">

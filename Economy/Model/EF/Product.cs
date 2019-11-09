@@ -25,8 +25,15 @@ namespace Model.EF
         [StringLength(250)]
         public string Image { get; set; }
 
-        [Column(TypeName = "xml")]
-        public string MoreImages { get; set; }
+        public string MoreImg1 { get; set; }
+
+        public string MoreImg2 { get; set; }
+
+        public string MoreImg3 { get; set; }
+
+        public string MoreImg4 { get; set; }
+
+        public string MoreImg5 { get; set; }
 
         public decimal? Price { get; set; }
 
@@ -42,7 +49,6 @@ namespace Model.EF
         [StringLength(150)]
         public string CategoryName { get; set; }
 
-        [StringLength(500)]
         public string Detail { get; set; }
 
         public int? Warranty { get; set; }

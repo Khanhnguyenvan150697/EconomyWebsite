@@ -1343,6 +1343,11 @@
     <Content Include="Content\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Content\ckfinder\translations.txt" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\zoomImg\.gitignore" />
+    <Content Include="Content\zoomImg\demo\index.html" />
+    <Content Include="Content\zoomImg\src\jquery.exzoom.css" />
+    <Content Include="Content\zoomImg\src\jquery.exzoom.js" />
+    <Content Include="Content\zoomImg\src\whitebg.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1701,6 +1706,9 @@
     <Content Include="Content\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
+    <Content Include="Content\zoomImg\LICENSE" />
+    <Content Include="Content\zoomImg\README.md" />
+    <Content Include="Content\zoomImg\src\jquery.exzoom.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Cktool.js" />
     <Content Include="Scripts\CKtool_edit.js" />
@@ -1715,6 +1723,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MoreImgs.js" />
     <Content Include="Scripts\twbs-pagination.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1747,6 +1756,7 @@
     <Content Include="Views\Home\Brand.cshtml" />
     <Content Include="Views\Home\ProductByBrand.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Partial\DisplayAdminNameHomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

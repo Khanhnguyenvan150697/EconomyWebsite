@@ -1,0 +1,16 @@
+﻿@using Economy.Common.Admin;
+@model AdminLogin
+
+@{
+    var sessionAd = ViewBag.SessionAdmin as AdminLogin;
+}
+
+@if (sessionAd == null)
+{
+    <li><a id="adminAcc" href="@Url.Action("Login","LoginAdmin")"><i class="fa fa-lock"><span> Admin</span></i></a></li>
+}
+else
+{
+    <li><a id="adminAcc" href="@Url.Action("HomeAdmin","HomeAdmin")"><i class="fa fa-lock"><span>Admin: @sessionAd.AdminName</span></i></a></li>
+}
+
