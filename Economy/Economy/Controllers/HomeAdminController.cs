@@ -7,6 +7,7 @@ using Model.EF;
 using Economy.Models;
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 
 namespace Economy.Controllers
 {
@@ -52,6 +53,11 @@ namespace Economy.Controllers
                     Quantity = prod.Quantity,
                     PromotionPrice = prod.PromotionPrice,
                     Image = prod.Image,
+                    MoreImg1 = prod.Image1,
+                    MoreImg2 = prod.Image2,
+                    MoreImg3 = prod.Image3,
+                    MoreImg4 = prod.Image4,
+                    MoreImg5 = prod.Image5,
                     Description = prod.Description,
                     Detail = prod.Detail
                 };
@@ -79,7 +85,6 @@ namespace Economy.Controllers
         }
 
         //Edit product
-        //Edit product
         [HttpGet]
         public ActionResult Edit(long? id)
         {
@@ -102,14 +107,15 @@ namespace Economy.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Product product)
         {
+            ViewBag.Brand = new SelectList(GetBrand(), "Name", "Name");
+            ViewBag.Cates = new SelectList(GetCate(), "Name", "Name");
+
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("HomeAdmin", "HomeAdmin");
             }
-            ViewBag.Brand = new SelectList(GetBrand(), "Name", "Name");
-            ViewBag.Cates = new SelectList(GetCate(), "Name", "Name");
 
             return View();
         }
@@ -126,6 +132,12 @@ namespace Economy.Controllers
                 result = "Xóa thành công";
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Demo()
+        {
+            string error = "sjenlfnc";
+            return Json(error, JsonRequestBehavior.AllowGet);
         }
 
         // Product detail

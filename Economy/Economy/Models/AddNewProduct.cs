@@ -20,6 +20,11 @@ namespace Economy.Models
 
         [Required(ErrorMessage ="You don't choose a image")]
         public string Image { set; get; }
+        public string Image1 { set; get; }
+        public string Image2 { set; get; }
+        public string Image3 { set; get; }
+        public string Image4 { set; get; }
+        public string Image5 { set; get; }
 
         [Required(ErrorMessage = "Enter category name...")]
         public string CategoryName { set; get; }

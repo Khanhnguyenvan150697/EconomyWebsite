@@ -24,7 +24,7 @@ function loadData() {
                 } else {
                     html += '<td><a id="editProd" class="btn btn-warning" style="padding: 12px 20px;">Hết hàng (' + item.Quantity + ')</a > ';
                 }
-                html += '<td><a style = "padding:12px 20px" href="/HomeAdmin/Edit/' + item.ID +'" class="btn btn-success">Edit</a> <a href="#" data-id="' + item.ID + '" style = "padding:12px 20px" class="btn btn-danger" id="deleteProd" onclick="Delete(this);">Delete</a></td>';
+                html += '<td><a style = "padding:12px 20px" href="/HomeAdmin/Edit/' + item.ID + '" class="btn btn-success">Edit</a> <a href="#" data-id="' + item.ID + '" style = "padding:12px 20px" class="btn btn-danger" id="deleteProd" onclick="Delete(this);">Delete</a></td>';
                 html += '<tr>';
             });
             $('#tblProducts').html(html);
@@ -32,17 +32,23 @@ function loadData() {
     });
 }
 
-//Delete Product
+// Delete Product
 function Delete(elem) {
     var getId = $(elem).data('id'); 
-    $.ajax({
-        type: 'POST',
-        url: '/HomeAdmin/Delete/' + getId + '',
-        success: function (result) {
-            loadData();
-        }
-    });
+    if (confirm('Bạn muốn xóa sản phẩm này. Nếu muốn xóa click vào OK.') == true) {
+        $.ajax({
+            type: 'POST',
+            url: '/HomeAdmin/Delete/' + getId + '',
+            success: function (result) {
+                loadData();
+            }
+        });
+    } else {
+        alert('Bạn đã hủy hành động xóa sản phẩm này.');
+    }
+    
 }
+
 
 //Product detail
 function Detail(elem) {
