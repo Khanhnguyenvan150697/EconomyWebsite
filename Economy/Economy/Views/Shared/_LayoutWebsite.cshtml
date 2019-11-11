@@ -47,8 +47,8 @@
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                @Html.Action("DisplayAdminNameHomePage","Partial")
-                                
+                                @Html.Action("DisplayAdminNameHomePage", "Partial")
+
                             </ul>
                         </div>
                     </div>
@@ -118,8 +118,8 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
-                                <li class="dropdown">
+                                <li><a href="index.html" class="active menuItem">Home</a></li>
+                                <li class="dropdown menuItem">
                                     <a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
@@ -129,21 +129,25 @@
                                         <li><a href="login.html">Login</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
+                                <li class="dropdown menuItem">
                                     <a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a class="menuItem" href="404.html">404</a></li>
+                                <li><a class="menuItem" href="contact-us.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" id="searchTxt"/>
+                            @using (Html.BeginForm("SearchProductPost", "Home"))
+                            {
+                                <input type="text" placeholder="Nhập từ khóa" name="keyword"/>
+                                <button type="submit" class="btn btn-primary" style="margin-top:0px;">Tìm kiếm</button>
+                            }
                         </div>
                     </div>
                 </div>
@@ -315,13 +319,15 @@
 
 
     <script src="~/Assets/LayoutWebsite/js/jquery.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Assets/LayoutWebsite/js/bootstrap.min.js"></script>
     <script src="~/Assets/LayoutWebsite/js/jquery.scrollUp.min.js"></script>
     <script src="~/Assets/LayoutWebsite/js/price-range.js"></script>
     <script src="~/Assets/LayoutWebsite/js/jquery.prettyPhoto.js"></script>
     <script src="~/Assets/LayoutWebsite/js/main.js"></script>
-    <script src="~/Scripts/Detail.js"></script>
     <script src="~/Content/zoomImg/src/jquery.exzoom.js"></script>
+    <script src="~/Scripts/exzoomConfig.js"></script>
+    <script src="~/Scripts/SearchProductHomePage.js"></script>
     <script src="~/Scripts/mainHomePage.js"></script>
 </body>
 </html>

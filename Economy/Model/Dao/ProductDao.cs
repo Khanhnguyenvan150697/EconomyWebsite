@@ -11,9 +11,15 @@ namespace Model.Dao
     {
         EconomyDbContext db = new EconomyDbContext();
         //Get all products
-        public List<Product> prods()
+        public List<Product> getAllProduct()
         {
             var lstProducts = db.Products.ToList();
+            return lstProducts;
+        }
+
+        public List<Product> getAllProductSearch(string key)
+        {
+            var lstProducts = db.Products.Where(x => x.Name.Contains(key)).OrderByDescending(x => x.Price).ToList();
             return lstProducts;
         }
 

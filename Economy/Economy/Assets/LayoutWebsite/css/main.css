@@ -875,7 +875,7 @@ h2.title {
 .productinfo h2{
 	color: #FE980F;
 	font-family: 'Roboto', sans-serif;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 700;
 }
 .product-overlay h2{
@@ -2538,4 +2538,25 @@ h2.title {
 #adminAcc span {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
+}
+
+.mainmenu {
+    margin-left: 0px;
+    padding-left: 25%;
+}
+.mainmenu .menuItem {
+    padding: 0 30px;
+}
+.searchBox{
+    width: 100%;
+    flex-direction: column;
+}
+.txtSearch{
+    width: 150px;
+}
+.input-group{
+    display: flex;
+    flex-direction: row;
+    margin-left: 67%;
+    margin-bottom: 20px;
 }
