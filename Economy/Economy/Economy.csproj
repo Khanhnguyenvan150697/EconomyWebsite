@@ -1712,11 +1712,14 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Cktool.js" />
     <Content Include="Scripts\CKtool_edit.js" />
+    <Content Include="Scripts\exzoomConfig.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1724,6 +1727,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MoreImgs.js" />
+    <Content Include="Scripts\SearchProductHomePage.js" />
     <Content Include="Scripts\twbs-pagination.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1757,6 +1761,8 @@
     <Content Include="Views\Home\ProductByBrand.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Partial\DisplayAdminNameHomePage.cshtml" />
+    <Content Include="Views\Home\SearchProductPartial.cshtml" />
+    <Content Include="Views\Home\SearchProductGet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

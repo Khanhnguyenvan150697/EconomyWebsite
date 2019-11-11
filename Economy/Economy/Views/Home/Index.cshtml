@@ -5,7 +5,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
 }
-
 <style>
     .imgShow {
         width: 100%;
@@ -102,9 +101,9 @@
             <div class="col-sm-3">
                 <div class="left-sidebar">
 
-                    @Html.Action("Category","Home")
+                    @Html.Action("Category", "Home")
 
-                    @Html.Action("Brand","Home")
+                    @Html.Action("Brand", "Home")
 
                     <div class="price-range">
                         <!--price-range-->
@@ -122,11 +121,19 @@
 
                 </div>
             </div>
-
-            @Html.Action("CategoryTab", "Home")
-
+            
             <div class="col-sm-9 padding-right ">
-                <div class="features_items">
+
+                @using (Ajax.BeginForm("SearchProductPartial", "Home", new AjaxOptions { @UpdateTargetId = "AllProduct", @InsertionMode = InsertionMode.Replace }))
+                {
+                    <div class="input-group col-md-4">
+                        <input type="text" class="form-control txtSearch" name="keyword" placeholder="Tìm kiếm nhanh">
+                        <button style="margin-top: 0px;" class="btn btn-primary" type="submit">Tìm kiếm</button>
+                    </div>
+                }
+
+                <div class="features_items" id="AllProduct">
+                    @Html.Action("CategoryTab", "Home")
                     <!--features_items-->
                     <h2 class="title text-center">Tất cả sản phẩm</h2>
                     @foreach (var item in Model)
@@ -162,7 +169,6 @@
                         </div>
                     }
                 </div><!--features_items-->
-
             </div>
         </div>
         </div>

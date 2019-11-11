@@ -19,7 +19,7 @@ namespace Economy.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var listAllProducts = prodDao.prods();
+            var listAllProducts = prodDao.getAllProduct();
             return View(listAllProducts);
         }
 
@@ -56,6 +56,24 @@ namespace Economy.Controllers
         {
             var prodsBrand = prodDao.GetAllProductByBrand(brand);
             return View(prodsBrand);
+        }
+        [HttpGet]
+        public ActionResult SearchProductGet(string keyword)
+        {
+            var listAllProducts = prodDao.getAllProductSearch(keyword);
+            ViewBag.Keyword = keyword;
+            return View(listAllProducts);
+        }
+        [HttpPost]
+        public ActionResult SearchProductPost(string keyword, FormCollection fc)
+        {
+            return RedirectToAction("SearchProductGet", new { @keyword=keyword});
+        }
+        //Search using ajax
+        public ActionResult SearchProductPartial(string keyword)
+        {
+            var listAllProducts = prodDao.getAllProductSearch(keyword);
+            return PartialView(listAllProducts);
         }
     }
 }

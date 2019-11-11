@@ -27,38 +27,34 @@
                             <b>$ 0</b> <b class="pull-right">$ 600</b>
                         </div>
                     </div><!--/price-range-->
-
-                    <div class="shipping text-center">
-                        <!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
-                    </div><!--/shipping-->
-
                 </div>
             </div>
 
             <div class="col-sm-9 padding-right">
                 <div class="product-details">
-                    <div style="padding-left: 0px; padding-right: 0px;" class="col-md-5 exzoom" id="exzoom">
-                        <!-- Images -->
-                        <div class="exzoom_img_box">
-                            <ul class='exzoom_img_ul'>
-                                <li><img style="height: 100%; width: auto;" src="@Model.Image" /></li>
-                                <li><img src="@Model.MoreImg1" /></li>
-                                <li><img src="@Model.MoreImg2" /></li>
-                                <li><img src="@Model.MoreImg3" /></li>
-                                <li><img src="@Model.MoreImg4" /></li>
-                                <li><img src="@Model.MoreImg5" /></li>
-                            </ul>
+                    <!--product-details-->
+                    <div class="col-sm-5">
+                        <div class="exzoom" id="exzoom">
+                            <!-- Images -->
+                            <div class="exzoom_img_box">
+                                <ul class='exzoom_img_ul'>
+                                    <li><img src="@Model.Image" /></li>
+                                    <li><img src="@Model.MoreImg1" /></li>
+                                    <li><img src="@Model.MoreImg2" /></li>
+                                    <li><img src="@Model.MoreImg3" /></li>
+                                    <li><img src="@Model.MoreImg4" /></li>
+                                    <li><img src="@Model.MoreImg5" /></li>
+                                </ul>
+                            </div>
+                            <!-- <a href="https://www.jqueryscript.net/tags.php?/Thumbnail/">Thumbnail</a> Nav-->
+                            <div class="exzoom_nav"></div>
+                            <!-- Nav Buttons -->
+                            <p class="exzoom_btn">
+                                <a href="javascript:void(0);" class="exzoom_prev_btn"> < </a>
+                                <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+                            </p>
                         </div>
-                        <!-- <a href="https://www.jqueryscript.net/tags.php?/Thumbnail/">Thumbnail</a> Nav-->
-                        <div class="exzoom_nav"></div>
-                        <!-- Nav Buttons -->
-                        <p class="exzoom_btn">
-                            <a href="javascript:void(0);" class="exzoom_prev_btn"> < </a>
-                            <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
-                        </p>
                     </div>
-                    
                     <div class="col-sm-7">
                         <div class="product-information">
                             <!--/product-information-->
@@ -92,9 +88,9 @@
                     <!--category-tab-->
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#chitiet" data-toggle="tab">Thông số sản phẩm</a></li>
-                            <li><a href="#details" data-toggle="tab">Đánh giá sản phẩm</a></li>
-                            <li><a href="#reviews" data-toggle="tab">Nhận xét</a></li>
+                            <li class="active"><a href="#chitiet" data-toggle="tab">Chi tiết sản phẩm</a></li>
+                            <li><a href="#details" data-toggle="tab">Mô tả sản phẩm</a></li>
+                            <li><a href="#reviews" data-toggle="tab">Đánh giá</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -102,7 +98,7 @@
                             <div>
                                 @Html.Raw(Model.Detail)
                             </div>
-                                
+
                         </div>
                         <div class="tab-pane fade" id="details">
                             @Html.Raw(Model.Description)
