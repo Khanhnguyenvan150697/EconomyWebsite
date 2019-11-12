@@ -1,0 +1,72 @@
+﻿@using Economy.Models;
+@model BlogModel
+@{
+    ViewBag.Title = "BlogAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">BLOG</h4>
+                        <p class="card-category">Create a blog</p>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("BlogAdmin", "HomeAdmin", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Author</label>
+                                        @Html.TextBoxFor(Model => Model.Creater, new { @class="form-control"})
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Category</label>
+                                        @Html.DropDownListFor(Model => Model.Category, ViewBag.BlogCate as SelectList, "", new { @class = "custom-select col-md-12" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="button" value="Select Image" id="imgThumbnail" class="controls" multiple />
+                                        @Html.TextBoxFor(Model => Model.Thumbnail, new { @class = "form-control", @id = "linkUrlImgThumb" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Title</label>
+                                        @Html.TextBoxFor(Model => Model.Title, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Short content</label>
+                                        @Html.TextBoxFor(Model => Model.ShortContent, new { @class="form-control"})
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Content</label>
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(Model => Model.Content, new { @id="txtBlogContent" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right" onclick="return confirm('Xác nhận thêm bài viết');">Submit</button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

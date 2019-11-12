@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     CKEDITOR.replace('txtDetail');
-
     // img1
     $('#selectImg1').off('click').on('click', function (e) {
         e.preventDefault();
