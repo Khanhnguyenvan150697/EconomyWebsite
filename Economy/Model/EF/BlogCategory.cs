@@ -6,14 +6,12 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Contact")]
-    public partial class Contact
+    [Table("BlogCategory")]
+    public partial class BlogCategory
     {
         public int ID { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string Content { get; set; }
-
-        public bool? Status { get; set; }
+        [StringLength(50)]
+        public string CateName { get; set; }
     }
 }
