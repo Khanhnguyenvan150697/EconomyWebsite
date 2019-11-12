@@ -144,6 +144,7 @@
     <Compile Include="Common\CommonConstant.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Models\AddNewProduct.cs" />
     <Compile Include="Models\AdminAccModel.cs" />
     <Compile Include="Models\AdminDetailProduct.cs" />
+    <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1362,6 +1364,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\BLog.js" />
+    <Content Include="Scripts\BlogEdit.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\RegisterAndLogin\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
@@ -1722,6 +1726,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Cktool.js" />
     <Content Include="Scripts\CKtool_edit.js" />
+    <Content Include="Scripts\exzoom.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -1772,6 +1777,11 @@
     <Content Include="Views\Partial\DisplayAdminNameHomePage.cshtml" />
     <Content Include="Views\Home\SearchProductPartial.cshtml" />
     <Content Include="Views\Home\SearchProductGet.cshtml" />
+    <Content Include="Views\Blog\Blog.cshtml" />
+    <Content Include="Views\HomeAdmin\BlogAdmin.cshtml" />
+    <Content Include="Views\HomeAdmin\EditBlog.cshtml" />
+    <Content Include="Views\HomeAdmin\BlogList.cshtml" />
+    <Content Include="Views\Blog\BlogDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

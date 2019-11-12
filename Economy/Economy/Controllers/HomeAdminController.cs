@@ -77,6 +77,15 @@ namespace Economy.Controllers
             return brands;
         }
 
+        //Get List BlogCategory
+        public List<BlogCategory> GetBlogCategory()
+        {
+
+            List<BlogCategory> blogCate = db.BlogCategories.ToList();
+
+            return blogCate;
+        }
+
         //Get List categories
         public List<Category> GetCate()
         {
@@ -150,6 +159,96 @@ namespace Economy.Controllers
                 return Json(prod, JsonRequestBehavior.AllowGet);
             }
             return Json(null);
+        }
+
+        [HttpGet]
+        public ActionResult BlogAdmin()
+        {
+            ViewBag.BlogCate = new SelectList(GetBlogCategory(), "CateName", "CateName");
+            return View();
+        }
+        //BlogAdmin
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult BlogAdmin(BlogModel blog)
+        {
+            ViewBag.BlogCate = new SelectList(GetBlogCategory(), "CateName", "CateName");
+            if (ModelState.IsValid)
+            {
+                var blg = new Blog()
+                {
+                    ID = blog.ID,
+                    Creater = blog.Creater,
+                    BlogCategory = blog.Category,
+                    Title = blog.Title,
+                    Thumbnail = blog.Thumbnail,
+                    CreatedDate = DateTime.Now,
+                    ShortContent = blog.ShortContent,
+                    Content = blog.Content
+                };
+                db.Blogs.Add(blg);
+                db.SaveChanges();
+                return View();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult EditBlog(int id)
+        {
+            ViewBag.BlogCate = new SelectList(GetBlogCategory(), "CateName", "CateName");
+
+            var blog = db.Blogs.Where(x => x.ID == id).FirstOrDefault();
+
+            if(blog != null)
+            {
+                return View(blog);
+            }
+            else
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditBlog(Blog blog)
+        {
+            ViewBag.BlogCate = new SelectList(GetBlogCategory(), "CateName", "CateName");
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(blog).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("BlogList", "HomeAdmin");
+            }
+            return View();
+        }
+
+        public ActionResult BlogList()
+        {
+            var blogs = db.Blogs.ToList();
+            return View(blogs);
+        }
+
+        // Show blog data
+        [HttpGet]
+        public JsonResult ShowBlogData()
+        {
+            var lstItem = db.Blogs.ToList();
+            return Json(lstItem, JsonRequestBehavior.AllowGet);
+        }
+
+        //Delete blog
+        public ActionResult DeleteBlog(int id)
+        {
+            var blog = db.Blogs.Where(x => x.ID == id).FirstOrDefault();
+            if(blog != null)
+            {
+                db.Blogs.Remove(blog);
+                db.SaveChanges();
+            }
+            return RedirectToAction("BlogList");
         }
     }
 }

@@ -37,15 +37,15 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="@Url.Action("Create","Products")">
+                        <a class="nav-link" href="@Url.Action("Create","HomeAdmin")">
                             <i class="material-icons">person</i>
                             <p>Create new products</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./tables.html">
+                        <a class="nav-link" href="@Url.Action("BlogAdmin","HomeAdmin")">
                             <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
+                            <p>Blog</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -213,6 +213,8 @@
     <script src="~/Scripts/twbs-pagination.js"></script>
     <script src="~/Scripts/MoreImgs.js"></script>
     <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/BLog.js"></script>
+    <script src="~/Scripts/BlogEdit.js"></script>
     <script>
         $(document).ready(function () {
             $().ready(function () {

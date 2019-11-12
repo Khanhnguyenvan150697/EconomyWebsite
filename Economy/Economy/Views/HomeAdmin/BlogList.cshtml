@@ -1,36 +1,43 @@
-﻿
-@using Model.EF;
-@model List<Product>
+﻿@using Model.EF;
+@model List<Blog>
+
 @{
-    ViewBag.Title = "HomeAdmin";
+    ViewBag.Title = "BlogList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-
-<a class="btn btn-primary" href="@Url.Action("Create","HomeAdmin")">Create new product</a>
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title " style="font-weight:600">DANH SÁCH SẢN PHẨM</h4>
+                <h4 class="card-title " style="font-weight:600">DANH SÁCH BÀI VIẾT</h4>
                 <p class="card-category">E-shopper</p>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class=" text-primary">
-                        <th>ID</th>
-                        <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Thương hiệu</th>
-                        <th>Danh mục</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Tình trạng</th>
-                        <th></th>
+                            <th>ID</th>
+                            <th>Tác giả</th>
+                            <th>Title</th>
+                            <th>Thumbnail</th>
+                            <th>Danh mục</th>
+                            <th>Ngày tạo</th>
+                            <th></th>
                         </thead>
-                        <tbody id="tblProducts">
+                        <tbody id="tblBlog">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.Creater</td>
+                                    <td>@item.Title</td>
+                                    <td><img style="width: 100px;" src="@item.Thumbnail"/></td>
+                                    <td>@item.BlogCategory</td>
+                                    <td>@item.CreatedDate</td>
+                                    <td><a href="@Url.Action("EditBlog","HomeAdmin", new { id=item.ID})"><i class="fa fa-pencil-square-o" aria-hidden="true" style="color:green;"></i></a> | <a href="@Url.Action("DeleteBlog", "HomeAdmin", new { id=item.ID})" onclick="return confirm('Bạn muốn xóa sản phẩm này?');"><i class="fa fa-trash" aria-hidden="true" style="color:red"></i></a></td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -154,3 +161,4 @@
 
     </div>
 </div>
+
