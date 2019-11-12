@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <title>商品放大镜</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="copyright" content=""/>
+
+    <!--<script src="js/jquery-1.9.1.min.js"></script>-->
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="../src/jquery.exzoom.js"></script>
+    <link href="../src/jquery.exzoom.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<style>
+    #exzoom {
+        width: 400px;
+        /*height: 400px;*/
+    }
+</style>
+
+<div class="exzoom" id="exzoom">
+    <div class="exzoom_img_box">
+        <ul class='exzoom_img_ul'>
+            <li><img src="images/photos/img01.png"/></li>
+            <li><img src="images/photos/img02.png"/></li>
+            <li><img src="images/photos/img03.png"/></li>
+            <li><img src="images/photos/img04.png"/></li>
+            <li><img src="images/photos/img05.png"/></li>
+            <li><img src="images/photos/img06.png"/></li>
+            <li><img src="images/photos/img07.png"/></li>
+            <li><img src="images/photos/img08.png"/></li>
+        </ul>
+    </div>
+    <div class="exzoom_nav"></div>
+    <p class="exzoom_btn">
+        <a href="javascript:void(0);" class="exzoom_prev_btn"> < </a>
+        <a href="javascript:void(0);" class="exzoom_next_btn"> > </a>
+    </p>
+</div>
+<script type="text/javascript">
+    $("#exzoom").exzoom({
+        autoPlay: false,
+    });
+</script>
+
+</body>
+</html>
