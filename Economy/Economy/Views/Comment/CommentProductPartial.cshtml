@@ -1,0 +1,14 @@
+﻿@using Model.EF;
+@model CommentProuct
+
+
+<li class="media">
+    <div class="media-body">
+        <ul class="sinlge-post-meta">
+            <li><i class="fa fa-user"></i>@Model.UserName</li>
+            <li><i class="fa fa-calendar"></i>@Model.CreatedDate</li>
+        </ul>
+        <p>@Model.CmtContent</p>
+    </div>
+</li>
+<br />
