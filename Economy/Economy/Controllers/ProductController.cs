@@ -14,6 +14,9 @@ namespace Economy.Controllers
         // GET: Product
         public ActionResult Detail(long? id)
         {
+            var cmtDao = new CommentDao().lst4Cmt(id);
+            ViewBag.comment = cmtDao;
+
             ViewBag.Session = Session[Common.CommonConstant.USER_SESSION];
             var prod = product.getProductById(id);
             return View(prod);

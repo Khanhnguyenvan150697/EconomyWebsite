@@ -146,6 +146,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginAdminController.cs" />
@@ -1782,6 +1783,8 @@
     <Content Include="Views\HomeAdmin\EditBlog.cshtml" />
     <Content Include="Views\HomeAdmin\BlogList.cshtml" />
     <Content Include="Views\Blog\BlogDetail.cshtml" />
+    <Content Include="Views\Comment\CommentProductPartial.cshtml" />
+    <Content Include="Views\Comment\GetAllComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
