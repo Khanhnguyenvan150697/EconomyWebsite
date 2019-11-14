@@ -9,10 +9,9 @@ namespace Model.EF
     [Table("CommentBlog")]
     public partial class CommentBlog
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        public long? ProductID { get; set; }
+        public long? BlogID { get; set; }
 
         public long? UserID { get; set; }
 
