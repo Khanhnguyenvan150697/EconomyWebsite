@@ -18,12 +18,22 @@ namespace Model.Dao
             return lstComment;
         }
 
+        public List<CommentBlog> lst4CmtBlog(long? id)
+        {
+            var lstComment = db.CommentBlogs.Where(x => x.BlogID == id).OrderByDescending(x => x.ID).Take(4).ToList();
+            return lstComment;
+        }
+
         //Get all comment to display
         public List<CommentProuct> lstAllCmt(long? id)
         {
             var lstComment = db.CommentProucts.Where(x => x.ProductID == id).OrderByDescending(x => x.ID).ToList();
             return lstComment;
         }
-
+        public List<CommentBlog> lstAllCmtBlog(long? id)
+        {
+            var lstComment = db.CommentBlogs.Where(x => x.BlogID == id).OrderByDescending(x => x.ID).ToList();
+            return lstComment;
+        }
     }
 }

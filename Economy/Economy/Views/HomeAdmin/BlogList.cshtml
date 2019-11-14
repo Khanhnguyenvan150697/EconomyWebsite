@@ -5,7 +5,7 @@
     ViewBag.Title = "BlogList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<a class="btn btn-primary" href="@Url.Action("BlogAdmin","HomeAdmin")">Create new blog</a>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -19,7 +19,7 @@
                         <thead class=" text-primary">
                             <th>ID</th>
                             <th>Tác giả</th>
-                            <th>Title</th>
+                            <th style="width:400px;">Title</th>
                             <th>Thumbnail</th>
                             <th>Danh mục</th>
                             <th>Ngày tạo</th>

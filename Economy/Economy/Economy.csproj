@@ -1785,6 +1785,8 @@
     <Content Include="Views\Blog\BlogDetail.cshtml" />
     <Content Include="Views\Comment\CommentProductPartial.cshtml" />
     <Content Include="Views\Comment\GetAllComment.cshtml" />
+    <Content Include="Views\Comment\CommentBlogPartial.cshtml" />
+    <Content Include="Views\Comment\GetAllCommentBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

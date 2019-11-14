@@ -19,6 +19,10 @@ namespace Economy.Controllers
         public ActionResult BlogDetail(int id)
         {
             var dao = new BlogDao();
+            var cmtDao = new CommentDao().lst4CmtBlog(id);
+            ViewBag.comment = cmtDao;
+
+            ViewBag.Session = Session[Common.CommonConstant.USER_SESSION];
 
             return View(dao.BlogDetail(id));
         }

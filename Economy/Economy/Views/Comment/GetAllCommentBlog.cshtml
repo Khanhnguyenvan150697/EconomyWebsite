@@ -1,0 +1,17 @@
+﻿@using Model.EF;
+@model List<CommentBlog>
+
+@foreach (var item in Model)
+{
+    <li class="media">
+        <div class="media-body">
+            <ul class="sinlge-post-meta">
+                <li><i class="fa fa-user"></i>@item.UserName</li>
+                <li><i class="fa fa-calendar"></i>@item.CreatedDate</li>
+            </ul>
+            <p>@item.CmtContent</p>
+        </div>
+    </li>
+    <br />
+}
+

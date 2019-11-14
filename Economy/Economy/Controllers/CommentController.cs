@@ -38,5 +38,31 @@ namespace Economy.Controllers
             return PartialView(cmtDao);
 
         }
+
+
+
+        // Comment function for blog
+        [HttpPost]
+        public ActionResult CommentBlogPartial(long? txtID, string txtUserName, string contentCmt)
+        {
+            var cmtBlog = new CommentBlog()
+            {
+                BlogID = txtID,
+                UserName = txtUserName,
+                CmtContent = contentCmt,
+                CreatedDate = DateTime.Now
+            };
+            db.CommentBlogs.Add(cmtBlog);
+            db.SaveChanges();
+            return PartialView(cmtBlog);
+        }
+
+        [HttpPost]
+        public ActionResult GetAllCommentBlog(long? idProdtxt)
+        {
+            var cmtDao = new CommentDao().lstAllCmtBlog(idProdtxt);
+            return PartialView(cmtDao);
+
+        }
     }
 }

@@ -4,6 +4,9 @@
 @{
     ViewBag.Title = "BlogDetail";
     Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+
+    var _session = ViewBag.Session as Economy.Common.UserLogin;
+    var lstcmt = ViewBag.comment as List<CommentBlog>;
 }
 
 <section>
@@ -91,80 +94,66 @@
                 </div><!--Comments-->
                 <div class="replay-box">
                     <div class="row">
-                        <div class="col-sm-4">
-                            <h2>Nhận xét</h2>
-                            <form>
-                                <div class="blank-arrow">
-                                    <label>Your Name</label>
-                                </div>
-                                <span>*</span>
-                                <input type="text">
-                                <div class="blank-arrow">
-                                    <label>Email Address</label>
-                                </div>
-                                <span>*</span>
-                                <input type="email">
-                            </form>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="text-area">
-                                <div class="blank-arrow">
-                                    <label>Your comment</label>
-                                </div>
-                                <span>*</span>
-                                <textarea name="message" rows="11" style="height:85px;"></textarea>
-                                <a class="btn btn-primary" href="">post comment</a>
-                            </div>
+                        <div class="col-md-12">
+                            @if (_session == null)
+                            {
+                                <a href="@Url.Action("Login","RegisterAndLogin")" class="btn btn-success" style="margin-left: 30%;">Mời bạn đăng nhập để bình luận</a>
+                            }
+                            else
+                            {
+                                using (Ajax.BeginForm("CommentBlogPartial", "Comment", FormMethod.Post, new AjaxOptions { UpdateTargetId = "lstCmt", InsertionMode = InsertionMode.InsertBefore }))
+                                {
+                                    <input value="@Model.ID" type="hidden" name="txtID"/>
+                                    <div class="col-md-4">
+                                        <h2>Nhận xét</h2>
+                                        <div class="blank-arrow">
+                                            <label>Tên hiển thị</label>
+                                        </div>
+                                        <span>*</span>
+                                        <input type="text" placeholder="Họ và tên..." name="txtUserName">
+                                        <div class="blank-arrow">
+                                            <label>Email</label>
+                                        </div>
+                                        <span>*</span>
+                                        <input type="text" value="@_session.UserEmail" disabled name=" txtUserEmail">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="text-area">
+                                            <div class="blank-arrow">
+                                                <label>Your comment</label>
+                                            </div>
+                                            <span>*</span>
+                                            <textarea name="contentCmt" rows="11" style="height:85px;"></textarea>
+                                            <button class="btn btn-primary" type="submit">Đăng bình luận</button>
+                                        </div>
+                                    </div>
+                                }
+                            }
                         </div>
                     </div>
                 </div><!--/Repaly Box-->
                 <div class="response-area">
-                    <h2>3 RESPONSES</h2>
-                    <ul class="media-list">
-                        <li class="media">
-
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="~/Assets/LayoutWebsite/images/blog/man-two.jpg" alt="">
-                            </a>
-                            <div class="media-body">
-                                <ul class="sinlge-post-meta">
-                                    <li><i class="fa fa-user"></i>Janis Gallagher</li>
-                                    <li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-                                    <li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-                            </div>
-                        </li>
-                        <li class="media second-media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="~/Assets/LayoutWebsite/images/blog/man-three.jpg" alt="">
-                            </a>
-                            <div class="media-body">
-                                <ul class="sinlge-post-meta">
-                                    <li><i class="fa fa-user"></i>Janis Gallagher</li>
-                                    <li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-                                    <li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="~/Assets/LayoutWebsite/images/blog/man-four.jpg" alt="">
-                            </a>
-                            <div class="media-body">
-                                <ul class="sinlge-post-meta">
-                                    <li><i class="fa fa-user"></i>Janis Gallagher</li>
-                                    <li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-                                    <li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
-                            </div>
-                        </li>
+                    <h2>Bình luận</h2>
+                    <ul class="media-list" id="lstCmt">
+                        @foreach (var item in lstcmt)
+                        {
+                            <li class="media">
+                                <div class="media-body">
+                                    <ul class="sinlge-post-meta">
+                                        <li><i class="fa fa-user"></i>@item.UserName</li>
+                                        <li><i class="fa fa-calendar"></i>@item.CreatedDate</li>
+                                    </ul>
+                                    <p>@item.CmtContent</p>
+                                </div>
+                            </li>
+                            <br />
+                        }
                     </ul>
+                    @using (Ajax.BeginForm("GetAllCommentBlog", "Comment", FormMethod.Post, new AjaxOptions { UpdateTargetId = "lstCmt", InsertionMode = InsertionMode.Replace }))
+                    {
+                        <input value="@Model.ID" name="idProdtxt" type="hidden" />
+                        <button type="submit" class="btn btn-primary" style="height: 30px; margin-left: 42%;">Hiển thị tất cả nhận xét <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+                    }
                 </div><!--/Response-area-->
             </div>
         </div>
