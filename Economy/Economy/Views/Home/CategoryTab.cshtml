@@ -57,7 +57,7 @@
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,8 @@
         <div class="tab-pane fade" id="other">
             @if (getOther.Count == 0)
             {
-                <h3 style="color: red;">Không có sản phẩm</h3>
+                
+                <input value="Không có sản phẩm" class="alert alert-danger" disabled style="margin-left:35%;"/>
             }
             else
             {
@@ -126,7 +127,7 @@
                                     <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                     <p>@item.Name</p>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                    <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
                                 </div>
                             </div>
                         </div>

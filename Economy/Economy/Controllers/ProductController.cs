@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
 using Economy.Common;
+using Economy.Models;
 
 namespace Economy.Controllers
 {
@@ -21,6 +22,5 @@ namespace Economy.Controllers
             var prod = product.getProductById(id);
             return View(prod);
         }
-
     }
 }

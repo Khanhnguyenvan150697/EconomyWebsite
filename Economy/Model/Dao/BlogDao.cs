@@ -22,5 +22,12 @@ namespace Model.Dao
             var detail = db.Blogs.Where(x => x.ID == id).FirstOrDefault();
             return detail;
         }
+
+        //Get all blogs
+        public List<Blog> getBlog()
+        {
+            var lstBlog = db.Blogs.Take(3).OrderBy(x => x.ID).ToList();
+            return lstBlog;
+        }
     }
 }
