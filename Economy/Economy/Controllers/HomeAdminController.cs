@@ -188,7 +188,7 @@ namespace Economy.Controllers
                 };
                 db.Blogs.Add(blg);
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("BlogAdmin");
             }
             return View();
         }

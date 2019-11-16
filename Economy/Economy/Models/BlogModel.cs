@@ -11,6 +11,7 @@ namespace Economy.Models
         public int ID { get; set; }
         [Required]
         public string Creater { get; set; }
+        public DateTime CreatedDate { get; set; }
         [Required]
         public string Category { get; set; }
         [Required]

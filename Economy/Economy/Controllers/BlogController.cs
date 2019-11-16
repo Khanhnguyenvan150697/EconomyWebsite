@@ -26,5 +26,12 @@ namespace Economy.Controllers
 
             return View(dao.BlogDetail(id));
         }
+
+        // new blogs
+        public ActionResult NewBlogs()
+        {
+            var dao = new BlogDao();
+            return PartialView(dao.getBlog());
+        }
     }
 }

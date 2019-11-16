@@ -1,0 +1,28 @@
+﻿@using Model.EF;
+@model List<Blog>
+
+<div class="recommended_items">
+    <!--recommended_items-->
+    <h2 class="title text-center">Bài viết mới nhất</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a href="@Url.Action("BlogDetail","Blog", new { id=item.ID})"><img src="@item.Thumbnail" alt="" style="" /></a>
+                                    <a href="@Url.Action("BlogDetail","Blog", new { id=item.ID})">@item.Title</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div><!--/recommended_items-->

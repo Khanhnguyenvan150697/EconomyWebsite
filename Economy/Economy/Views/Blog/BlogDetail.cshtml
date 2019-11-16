@@ -8,7 +8,11 @@
     var _session = ViewBag.Session as Economy.Common.UserLogin;
     var lstcmt = ViewBag.comment as List<CommentBlog>;
 }
-
+<style>
+    .btnShowAllCmt {
+        margin-left: 42%;
+    }
+</style>
 <section>
     <div class="container">
         <div class="row">
@@ -97,13 +101,41 @@
                         <div class="col-md-12">
                             @if (_session == null)
                             {
-                                <a href="@Url.Action("Login","RegisterAndLogin")" class="btn btn-success" style="margin-left: 30%;">Mời bạn đăng nhập để bình luận</a>
+                                <input value="@Model.ID" type="hidden" name="idProduct" />
+                                using (Html.BeginForm("DemoLogin", "RegisterAndLogin", FormMethod.Post))
+                                {
+                                    <button type="button" class="btn btn-info btn-lg btnShowAllCmt" data-toggle="modal" data-target="#myModal">Đăng nhập để bình luận</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Đăng nhập tại đây</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="hidden" class="form-control" value="@Request.Url.ToString()" name="strUrl" />
+                                                    <input type="text" class="form-control" placeholder="Nhập email..." name="txtEmail" />
+                                                    <br />
+                                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu..." name="txtPass" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-success">Đăng nhập</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             }
                             else
                             {
                                 using (Ajax.BeginForm("CommentBlogPartial", "Comment", FormMethod.Post, new AjaxOptions { UpdateTargetId = "lstCmt", InsertionMode = InsertionMode.InsertBefore }))
                                 {
-                                    <input value="@Model.ID" type="hidden" name="txtID"/>
+                                    <input value="@Model.ID" type="hidden" name="txtID" />
                                     <div class="col-md-4">
                                         <h2>Nhận xét</h2>
                                         <div class="blank-arrow">
