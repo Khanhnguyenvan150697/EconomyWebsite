@@ -17,13 +17,14 @@ namespace Economy.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CommentProductPartial(long? txtID, string txtUserName, string contentCmt)
+        public ActionResult CommentProductPartial(long? txtID, string txtUserName, string contentCmt, string txtAvatar)
         {
             var cmtProd = new CommentProuct()
             {
                 ProductID = txtID,
                 UserName = txtUserName,
                 CmtContent = contentCmt,
+                Avatar = txtAvatar,
                 CreatedDate = DateTime.Now
             };
             db.CommentProucts.Add(cmtProd);
@@ -43,13 +44,14 @@ namespace Economy.Controllers
 
         // Comment function for blog
         [HttpPost]
-        public ActionResult CommentBlogPartial(long? txtID, string txtUserName, string contentCmt)
+        public ActionResult CommentBlogPartial(long? txtID, string txtUserName, string contentCmt, string txtAvatar)
         {
             var cmtBlog = new CommentBlog()
             {
                 BlogID = txtID,
                 UserName = txtUserName,
                 CmtContent = contentCmt,
+                Avatar = txtAvatar,
                 CreatedDate = DateTime.Now
             };
             db.CommentBlogs.Add(cmtBlog);

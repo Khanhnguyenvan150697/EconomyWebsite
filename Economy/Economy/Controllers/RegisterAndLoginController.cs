@@ -12,6 +12,7 @@ namespace Economy.Controllers
 {
     public class RegisterAndLoginController : Controller
     {
+        EconomyDbContext db = new EconomyDbContext();
         // Register Application
         [HttpGet]
         public ActionResult Register()
@@ -19,30 +20,44 @@ namespace Economy.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register(User user)
+        public ActionResult Register(RegisterModel register)
         {
-            EconomyDbContext db = null;
-            db = new EconomyDbContext();
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var _user = new User()
+                var dao = new UserDao();
+                if(dao.CheckEmail(register.Email) == true)
                 {
-                    UserName = user.UserName,
-                    Password = user.Password,
-                    Email = user.Email,
-                    CreatedDate = DateTime.Now
-                };
-                db.Users.Add(_user);
-                db.SaveChanges();
-                return RedirectToAction("Login");
+                    ModelState.AddModelError("","Email này đã tồn tại !");
+                }
+                else
+                {
+                    if(register.Password == register.RePassword)
+                    {
+                        var _user = new User() {
+                            UserName = register.UserName,
+                            Email = register.Email,
+                            Password = register.Password,
+                            Avatar = register.Avatar,
+                            CreatedDate = DateTime.Now
+                        };
+                        db.Users.Add(_user);
+                        db.SaveChanges();
+                        ViewBag.succsess = "Đăng ký thành công";
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("","Mật khẩu không trùng nhau");
+                    }
+                }
+                return View();
             }
             else
             {
                 return View();
             }
         }
-        // Login application
-        [HttpGet]
+        //Login application
+       [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -53,26 +68,30 @@ namespace Economy.Controllers
             if (ModelState.IsValid)
             {
                 var checkAcc = new UserDao();
-                if(checkAcc.CheckAccount(user.Email, user.Password) == true)
+                if (checkAcc.CheckAccount(user.Email, user.Password) == true)
                 {
                     var userSession = new UserLogin();
                     var _user = new UserDao().GetUserByID(user.Email);
                     userSession.UserID = _user.ID;
                     userSession.UserName = _user.UserName;
                     userSession.UserEmail = _user.Email;
+                    userSession.Avatar = _user.Avatar;
 
                     //Add 2 object into Session.Add();
                     Session.Add(CommonConstant.USER_SESSION, userSession);
+                    ViewBag.succsess = "Đăng nhập thành công";
 
-                    return RedirectToAction("Index","Home");
+                    return View();
                 }
                 else
                 {
+                    ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
                     return View();
                 }
             }
             else
             {
+                ModelState.AddModelError("", "Bạn chưa điền đầy đủ thông tin.");
                 return View();
             }
         }
@@ -80,7 +99,7 @@ namespace Economy.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -97,20 +116,22 @@ namespace Economy.Controllers
                     userSession.UserID = _user.ID;
                     userSession.UserName = _user.UserName;
                     userSession.UserEmail = _user.Email;
+                    userSession.Avatar = _user.Avatar;
 
                     //Add 2 object into Session.Add();
                     Session.Add(CommonConstant.USER_SESSION, userSession);
-                    ViewBag.succsess = "Thành công";
                     return Redirect(strUrl);
                 }
                 else
                 {
+                    ModelState.AddModelError("","Email hoặc mật khẩu không đúng");
                     return Redirect(strUrl);
                 }
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError("", "Các trường không được để trống.");
+                return Redirect(strUrl);
             }
         }
     }

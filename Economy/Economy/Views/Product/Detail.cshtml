@@ -115,7 +115,7 @@
                                 using (Html.BeginForm("DemoLogin", "RegisterAndLogin", FormMethod.Post))
                                 {
                                     <button type="button" class="btn btn-info btn-lg btnShowAllCmt" data-toggle="modal" data-target="#myModal">Đăng nhập để bình luận</button>
-
+                                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
                                     <!-- Modal -->
                                     <div class="modal fade" id="myModal" role="dialog">
                                         <div class="modal-dialog">
@@ -149,6 +149,10 @@
                                     @using (Ajax.BeginForm("CommentProductPartial", "Comment", FormMethod.Post, new AjaxOptions { UpdateTargetId = "lstCmt", InsertionMode = InsertionMode.InsertBefore }))
                                     {
                                         <input type="hidden" value="@Model.ID" name="txtID" />
+                                        if (_session != null)
+                                        {
+                                            <input value="@_session.Avatar" name="txtAvatar" type="hidden" />
+                                        }
                                         <span>
                                             <input style="color: brown; font-weight: 600;" placeholder="Tên hiển thị" name="txtUserName" />
                                             <input style="color: brown; font-weight: 600;" value="@_session.UserEmail" disabled name=" txtUserEmail" />
@@ -166,6 +170,9 @@
                                     @foreach (var item in lstcmt)
                                     {
                                         <li class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="media-object" src="@item.Avatar" style="width: 100px;">
+                                            </a>
                                             <div class="media-body">
                                                 <ul class="sinlge-post-meta">
                                                     <li><i class="fa fa-user"></i>@item.UserName</li>

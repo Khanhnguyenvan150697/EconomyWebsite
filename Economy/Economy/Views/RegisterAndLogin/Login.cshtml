@@ -12,26 +12,41 @@
             <div class="signin-image">
                 <figure><img src="~/Assets/RegisterAndLogin/images/signin-image.jpg" alt="sing up image"></figure>
                 @*<a href="#" class="signup-image-link">Create an account</a>*@
-                @Html.ActionLink("Create an account", "Register", null, new { @class = "signup-image-link" })
+                @Html.ActionLink("Đăng ký tài khoản tại đây", "Register", null, new { @class = "signup-image-link" })
             </div>
 
             <div class="signin-form">
-                <h2 class="form-title">Log in</h2>
+                <h2 class="form-title" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Đăng nhập</h2>
                 @using (Html.BeginForm("Login", "RegisterAndLogin", FormMethod.Post, new { @class = "register-form", @id = "login-form" }))
                 {
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                    if (ViewBag.succsess != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.succsess</div>
+                    }
                     <div class="form-group">
                         <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         @Html.TextBoxFor(Model => Model.Email, new { @name = "your_name", @id = "your_name", @placeholder = "your email..." })
-                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @style="color:red"})
+                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @style = "color:red" })
                     </div>
                     <div class="form-group">
                         <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                         @Html.PasswordFor(Model => Model.Password, new { @name = "your_pass", @id = "your_pass", @placeholder = "your password..." })
-                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @style="color:red"})
+                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @style = "color:red" })
                     </div>
-                    <div class="form-group form-button">
-                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
-                    </div>
+                    if (ViewBag.succsess == null)
+                    {
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group form-button">
+                            <a class="btn btn-success" href="@Url.Action("Index","Home")">Đi đến trang chủ</a>
+                        </div>
+                    }
+
                 }
 
                 <div class="social-login">

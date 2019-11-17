@@ -18,6 +18,8 @@ namespace Model.EF
         [StringLength(100)]
         public string UserName { get; set; }
 
+        public string Avatar { get; set; }
+
         public string CmtContent { get; set; }
 
         public DateTime? CreatedDate { get; set; }

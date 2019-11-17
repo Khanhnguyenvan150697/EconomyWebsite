@@ -4,11 +4,13 @@
 @foreach (var item in Model)
 {
     <li class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="@item.Avatar" style="width: 100px;">
+        </a>
         <div class="media-body">
             <ul class="sinlge-post-meta">
                 <li><i class="fa fa-user"></i>@item.UserName</li>
-                <li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-                <li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
+                <li><i class="fa fa-calendar"></i>@item.CreatedDate</li>
             </ul>
             <p>@item.CmtContent</p>
         </div>

@@ -26,7 +26,7 @@ namespace Model.Dao
         //Get all blogs
         public List<Blog> getBlog()
         {
-            var lstBlog = db.Blogs.Take(3).OrderBy(x => x.ID).ToList();
+            var lstBlog = db.Blogs.Take(3).OrderByDescending(x => x.ID).ToList();
             return lstBlog;
         }
     }

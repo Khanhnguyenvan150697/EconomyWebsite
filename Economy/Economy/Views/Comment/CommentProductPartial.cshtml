@@ -1,8 +1,10 @@
 ﻿@using Model.EF;
 @model CommentProuct
 
-
 <li class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="@Model.Avatar" style="width: 100px;">
+        </a>
     <div class="media-body">
         <ul class="sinlge-post-meta">
             <li><i class="fa fa-user"></i>@Model.UserName</li>
