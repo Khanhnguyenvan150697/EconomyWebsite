@@ -1,4 +1,5 @@
-﻿@model Model.EF.User
+﻿@using Economy.Models;
+@model RegisterModel
 
 @{
     ViewBag.Title = "Register";
@@ -8,40 +9,52 @@
 <!-- Sign up form -->
 <section class="signup">
     <div class="container">
-        <div class="signup-content">
-            <div class="signup-form">
-                <h2 class="form-title">Sign up</h2>
-                @using (Html.BeginForm("Register", "RegisterAndLogin", FormMethod.Post, new { @class = "register-form", @id = "register-form" }))
-                {
-                    <div class="form-group">
-                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        @Html.TextBoxFor(model => model.UserName, new { @id="name", @placeholder="Your username...", @name="name"})
-                        @Html.ValidationMessageFor(model => model.UserName, null, new { @style="color:red"})
+        @using (Html.BeginForm("Register", "RegisterAndLogin", FormMethod.Post, new { @class = "register-form", @id = "register-form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="signup-content">
+                <div class="signup-form">
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger"})
+                    @if(ViewBag.succsess != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.succsess</div>
+                    }
+                    <h2 class="form-title" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Đăng ký</h2>
+                    <div>
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            @Html.TextBoxFor(Model => Model.UserName, new { @id = "name", @placeholder = "Họ và tên...", @name = "name" })
+                            @Html.ValidationMessageFor(Model => Model.UserName, null, new { @style = "color:red" })
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            @Html.TextBoxFor(Model => Model.Email, new { @id = "email", @placeholder = "Email...", @name = "email" })
+                            @Html.ValidationMessageFor(Model => Model.Email, null, new { @style = "color:red" })
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            @Html.PasswordFor(Model => Model.Password, new { @id = "pass", @placeholder = "Mật khẩu...", @name = "pass" })
+                            @Html.ValidationMessageFor(Model => Model.Password, null, new { @style = "color:red" })
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            @Html.PasswordFor(Model => Model.RePassword, new { @id = "repass", @placeholder = "Nhập lại mật khẩu...", @name = "pass" })
+                            @Html.ValidationMessageFor(Model => Model.RePassword, null, new { @style = "color:red" })
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký" />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email"><i class="zmdi zmdi-email"></i></label>
-                        @Html.TextBoxFor(model => model.Email, new { @id = "email", @placeholder = "Your email...", @name = "email" })
-                        @Html.ValidationMessageFor(model => model.Email, null, new { @style="color:red"})
-                    </div>
-                    <div class="form-group">
-                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                        @Html.PasswordFor(model => model.Password, new { @id = "pass", @placeholder = "Your password...", @name = "pass" })
-                        @Html.ValidationMessageFor(model => model.Password, null, new { @style="color:red"})
-                    </div>
-                    @*<div class="form-group">
-                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
-                    </div>*@
-                    <div class="form-group form-button">
-                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
-                    </div>
-                }
+                </div>
+                <div class="signup-image">
+                    <input class="btn btn-success" id="btnChooseImg" type="button" value="Chọn ảnh" />
+                    @Html.TextBoxFor(Model => Model.Avatar, new { @id = "imgAvatar", @class = "form-controll" })
+                    @Html.ValidationMessageFor(Model => Model.Avatar, null, new { @style = "color:red" })
+                    <figure id="firgureImg"></figure>
+                    @Html.ActionLink("Tôi đã là thành viên, đi đến đăng nhập.", "Login", null, new { @class = "signup-image-link" })
+                    @Html.ActionLink("Về trang chủ", "Index", "Home",  null, new { @class = "signup-image-link" })
+                </div>
             </div>
-            <div class="signup-image">
-                <figure><img src="~/Assets/RegisterAndLogin/images/signup-image.jpg" alt="sing up image"></figure>
-                @*<a href="#" class="signup-image-link">I am already member</a>*@
-                @Html.ActionLink("I am already member", "Login", null, new { @class = "signup-image-link" })
-            </div>
-        </div>
+        }
     </div>
 </section>

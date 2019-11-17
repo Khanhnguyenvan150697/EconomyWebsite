@@ -9,9 +9,9 @@
 @if (_user != null)
 {
 
-    <li><a href="@Url.Action("Register","RegisterAndLogin")"><i class="fa fa-user"></i>@_user.UserName</a></li>
+    <li><a><i class="fa fa-user"></i>@_user.UserName</a></li>
 }
 else
 {
-    <li><a href="@Url.Action("Register","RegisterAndLogin")"><i class="fa fa-user"></i>Register</a></li>
+    <li><a href="@Url.Action("Login","RegisterAndLogin")"><i class="fa fa-user"></i>Đăng nhập</a></li>
 }

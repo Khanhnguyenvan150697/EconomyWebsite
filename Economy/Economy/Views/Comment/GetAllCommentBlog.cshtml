@@ -4,6 +4,9 @@
 @foreach (var item in Model)
 {
     <li class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="@item.Avatar" style="width: 100px;">
+        </a>
         <div class="media-body">
             <ul class="sinlge-post-meta">
                 <li><i class="fa fa-user"></i>@item.UserName</li>

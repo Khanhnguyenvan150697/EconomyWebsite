@@ -91,11 +91,9 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="@Url.Action("Cart","Cart")"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="@Url.Action("Login","RegisterAndLogin")"><i class="fa fa-lock"></i> Log in</a></li>
-                                <li><a href="@Url.Action("Logout","RegisterAndLogin")"><i class="fa fa-lock"></i> Log out</a></li>
-                                @*<li><a href="#"><i class="fa fa-user"></i> Account</a></li>*@
                                 @Html.Action("Account", "Partial")
+                                <li><a href="@Url.Action("Logout","RegisterAndLogin")"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+                                <li><a href="@Url.Action("Cart","Cart")"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
                             </ul>
                         </div>
                     </div>

@@ -136,6 +136,10 @@
                                 using (Ajax.BeginForm("CommentBlogPartial", "Comment", FormMethod.Post, new AjaxOptions { UpdateTargetId = "lstCmt", InsertionMode = InsertionMode.InsertBefore }))
                                 {
                                     <input value="@Model.ID" type="hidden" name="txtID" />
+                                    if (_session != null)
+                                    {
+                                        <input value="@_session.Avatar" name="txtAvatar" type="hidden" />
+                                    }
                                     <div class="col-md-4">
                                         <h2>Nhận xét</h2>
                                         <div class="blank-arrow">
@@ -170,6 +174,9 @@
                         @foreach (var item in lstcmt)
                         {
                             <li class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="@item.Avatar" style="width: 100px;">
+                                </a>
                                 <div class="media-body">
                                     <ul class="sinlge-post-meta">
                                         <li><i class="fa fa-user"></i>@item.UserName</li>
@@ -184,7 +191,7 @@
                     @using (Ajax.BeginForm("GetAllCommentBlog", "Comment", FormMethod.Post, new AjaxOptions { UpdateTargetId = "lstCmt", InsertionMode = InsertionMode.Replace }))
                     {
                         <input value="@Model.ID" name="idProdtxt" type="hidden" />
-                        <button type="submit" class="btn btn-primary" style="height: 30px; margin-left: 42%;">Hiển thị tất cả nhận xét <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+                        <button type="submit" class="btn btn-primary" style="height: 30px; margin-left: 42%; margin-top: 0px;">Hiển thị tất cả nhận xét <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
                     }
                 </div><!--/Response-area-->
             </div>
