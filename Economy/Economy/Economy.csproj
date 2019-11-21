@@ -160,6 +160,7 @@
     <Compile Include="Models\AdminAccModel.cs" />
     <Compile Include="Models\AdminDetailProduct.cs" />
     <Compile Include="Models\BlogModel.cs" />
+    <Compile Include="Models\CartItemModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -1792,6 +1793,8 @@
     <Content Include="Views\Comment\GetAllCommentBlog.cshtml" />
     <Content Include="Views\Product\Login.cshtml" />
     <Content Include="Views\Blog\NewBlogs.cshtml" />
+    <Content Include="Views\Cart\CartHeader.cshtml" />
+    <Content Include="Views\Cart\Notification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

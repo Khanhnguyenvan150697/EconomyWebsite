@@ -147,7 +147,7 @@
                                         </div>
                                         <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                         <p class="txtProductName">@item.Name</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua hàng</a>
+                                        <a href="@Url.Action("AddCartItem","Cart", new { @id=item.ID, @strUrl=Request.Url.ToString()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua hàng</a>
                                     </div>
                                 </div>
                                 <div class="choose">
@@ -155,13 +155,13 @@
                                         @if (item.Quantity > 0)
                                         {
                                             <li><a href="#" style="color: green;"><i class="fa fa-plus-square"></i>Còn hàng (@item.Quantity)</a></li>
-                                            <li class="txtChiTietSP"><a class="txtChiTietSP" href="@Url.Action("Detail","Product",new { @id=item.ID})" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
+                                            <li class="txtChiTietSP"><a class="txtChiTietSP" href="@Url.Action("Detail", "Product", new { @id = item.ID })" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
                                         }
                                         else
                                         {
                                             <li><a href="#" style="color: red;"><i class="fa fa-plus-square"></i>Hết hàng</a></li>
-                                            <li class="txtChiTietSP"><a href="@Url.Action("Detail","Product",new { @id=item.ID})" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
-                                        }
+                                            <li class="txtChiTietSP"><a href="@Url.Action("Detail", "Product", new { @id = item.ID })" style="color: darkgoldenrod;"><i class="fa fa-plus-square"></i>Chi tiết sản phẩm</a></li>
+                                            }
 
                                     </ul>
                                 </div>

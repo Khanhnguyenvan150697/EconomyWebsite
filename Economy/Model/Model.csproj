@@ -63,6 +63,8 @@
     <Compile Include="EF\Blog.cs" />
     <Compile Include="EF\BlogCategory.cs" />
     <Compile Include="EF\Brand.cs" />
+    <Compile Include="EF\CartOrder.cs" />
+    <Compile Include="EF\CartOrderDetail.cs" />
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\CommentBlog.cs" />
     <Compile Include="EF\CommentProuct.cs" />
@@ -70,8 +72,6 @@
     <Compile Include="EF\Footer.cs" />
     <Compile Include="EF\Menu.cs" />
     <Compile Include="EF\MenuType.cs" />
-    <Compile Include="EF\Order.cs" />
-    <Compile Include="EF\OrderDetail.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="EF\ProductCategory.cs" />
     <Compile Include="EF\Tag.cs" />

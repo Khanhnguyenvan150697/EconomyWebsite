@@ -80,7 +80,6 @@ namespace Economy.Controllers
                     //Add 2 object into Session.Add();
                     Session.Add(CommonConstant.USER_SESSION, userSession);
                     ViewBag.succsess = "Đăng nhập thành công";
-
                     return View();
                 }
                 else
