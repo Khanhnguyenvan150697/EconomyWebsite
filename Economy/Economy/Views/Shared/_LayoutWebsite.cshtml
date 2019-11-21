@@ -93,7 +93,8 @@
                             <ul class="nav navbar-nav">
                                 @Html.Action("Account", "Partial")
                                 <li><a href="@Url.Action("Logout","RegisterAndLogin")"><i class="fa fa-lock"></i> Đăng xuất</a></li>
-                                <li><a href="@Url.Action("Cart","Cart")"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+                                @*<li id="cartheader"><a href="@Url.Action("Cart","Cart")"><i class="fa fa-shopping-cart"></i> Giỏ hàng (0 sản phẩm)</a></li>*@
+                                @Html.Action("CartHeader","Cart")
                             </ul>
                         </div>
                     </div>

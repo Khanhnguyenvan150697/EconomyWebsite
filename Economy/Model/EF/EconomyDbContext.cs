@@ -16,14 +16,14 @@ namespace Model.EF
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<BlogCategory> BlogCategories { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<CartOrder> CartOrders { get; set; }
+        public virtual DbSet<CartOrderDetail> CartOrderDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CommentBlog> CommentBlogs { get; set; }
         public virtual DbSet<CommentProuct> CommentProucts { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
@@ -31,6 +31,18 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CartOrder>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<CartOrder>()
+                .Property(e => e.TotalPrice)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<CartOrderDetail>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
             modelBuilder.Entity<Category>()
                 .Property(e => e.MetaTitle)
                 .IsUnicode(false);
@@ -50,10 +62,6 @@ namespace Model.EF
             modelBuilder.Entity<Footer>()
                 .Property(e => e.ID)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<OrderDetail>()
-                .Property(e => e.Price)
-                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Code)
