@@ -16,11 +16,11 @@ namespace Economy.Models
 
         public long? ProductID { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
-        public decimal? TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
 
         public CartItemModel(long id)
         {
@@ -29,9 +29,9 @@ namespace Economy.Models
             ProductName = prod.Name;
             ImageProduct = prod.Image;
             ProductID = prod.ID;
-            Price = prod.Price;
+            Price = prod.Price.Value;
             Quantity = 1;
-            TotalPrice = prod.Quantity * prod.Price;
+            TotalPrice = Price * Quantity;
         }
     }
 }

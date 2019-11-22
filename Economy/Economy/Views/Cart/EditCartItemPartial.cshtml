@@ -1,0 +1,196 @@
+﻿@using Economy.Models;
+@model CartItemModel
+
+@{ 
+     List<CartItemModel> lstCartItem = ViewBag.Cart as List<CartItemModel>;
+
+}
+
+<section id="cart_items">
+    <div class="container">
+        @if (lstCartItem.Count == 0)
+        {
+            <h2 class="alert alert-danger">Giỏ hàng rỗng | Tiếp tục mua hàng @Html.ActionLink("tại đây", "Index", "Home")</h2>
+        }
+        else
+        {
+            <div class="review-payment">
+                <h2>Giỏ hàng</h2>
+            </div>
+
+            <div class="table-responsive cart_info">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image" style="width:120px;">Sản phẩm</td>
+                            <td class="description" style="width:250px;"></td>
+                            <td class="price">Đơn giá</td>
+                            <td class="quantity">Số lượng</td>
+                            <td class="total">Thành tiền</td>
+                            <td style="width:100px;"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in lstCartItem)
+                        {
+                            if (Model.ProductID == item.ID)
+                            {
+                                using (Html.BeginForm("EditCartItem", "Cart", FormMethod.Post))
+                                {
+                                    <tr>
+                                        @*@Html.Hidden("ProductID", item.ProductID)*@
+                                        <input value="@item.ProductID" type="hidden" name="ProductID" />
+                                        <td class="cart_product" style="margin-top:20px;margin-bottom:20px; margin-right:20px;">
+                                            <a href="@Url.Action("Detail", "Product", new { @id = item.ID })"><img style="width:110px;" src="@item.ImageProduct" alt=""></a>
+                                        </td>
+                                        <td class="cart_description">
+                                            <h4><a href="@Url.Action("Detail", "Product", new { @id = item.ID })">@item.ProductName</a></h4>
+                                            <p>Mã sản phẩm: @item.ProductID</p>
+                                        </td>
+                                        <td class="cart_price">
+                                            <p>@item.Price.ToString("#,##") VNĐ</p>
+                                        </td>
+                                        <td class="cart_quantity">
+                                            <div class="cart_quantity_button">
+                                                <input value="@item.Quantity" name="Quantity" size="2" class="cart_quantity_input" />
+                                                @*@Html.TextBox("Quantity", item.Quantity, new { @class = "cart_quantity_input", @size = "2" })*@
+                                            </div>
+                                        </td>
+                                        <td class="cart_total" style="width:200px;">
+                                            <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                        </td>
+                                        <td class="cart_delete" style="margin-left:20px;">
+                                            <input value="OK" class="btn btn-primary" type="submit" style="margin-top:0px;" />
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="cart_product" style="margin-top:20px;margin-bottom:20px; margin-right:20px;">
+                                        <a href="@Url.Action("Detail", "Product", new { @id = item.ID })"><img style="width:110px;" src="@item.ImageProduct" alt=""></a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4><a href="@Url.Action("Detail", "Product", new { @id = item.ID })">@item.ProductName</a></h4>
+                                        <p>Mã sản phẩm: @item.ProductID</p>
+                                    </td>
+                                    <td class="cart_price">
+                                        <p>@item.Price.ToString("#,##") VNĐ</p>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <div class="cart_quantity_button">
+                                            <input class="cart_quantity_input" type="text" name="quantity" value="@item.Quantity" autocomplete="off" size="2" disabled>
+                                        </div>
+                                    </td>
+                                    <td class="cart_total" style="width:200px;">
+                                        <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                    </td>
+                                    <td class="cart_delete" style="margin-left:20px;">
+                                        <a class="cart_quantity_delete" href="@Url.Action("EditCartItem","Cart", new { @id=item.ID})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        <div class="step-one">
+            <h2 class="heading">Step1</h2>
+        </div>
+        <div class="checkout-options">
+            <h3>New User</h3>
+            <p>Checkout options</p>
+            <ul class="nav">
+                <li>
+                    <label><input type="checkbox"> Register Account</label>
+                </li>
+                <li>
+                    <label><input type="checkbox"> Guest Checkout</label>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-times"></i>Cancel</a>
+                </li>
+            </ul>
+        </div><!--/checkout-options-->
+
+        <div class="register-req">
+            <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
+        </div><!--/register-req-->
+
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="shopper-info">
+                        <p>Shopper Information</p>
+                        <form>
+                            <input type="text" placeholder="Display Name">
+                            <input type="text" placeholder="User Name">
+                            <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Confirm password">
+                        </form>
+                        <a class="btn btn-primary" href="">Get Quotes</a>
+                        <a class="btn btn-primary" href="">Continue</a>
+                    </div>
+                </div>
+                <div class="col-sm-5 clearfix">
+                    <div class="bill-to">
+                        <p>Bill To</p>
+                        <div class="form-one">
+                            <form>
+                                <input type="text" placeholder="Company Name">
+                                <input type="text" placeholder="Email*">
+                                <input type="text" placeholder="Title">
+                                <input type="text" placeholder="First Name *">
+                                <input type="text" placeholder="Middle Name">
+                                <input type="text" placeholder="Last Name *">
+                                <input type="text" placeholder="Address 1 *">
+                                <input type="text" placeholder="Address 2">
+                            </form>
+                        </div>
+                        <div class="form-two">
+                            <form>
+                                <input type="text" placeholder="Zip / Postal Code *">
+                                <select>
+                                    <option>-- Country --</option>
+                                    <option>United States</option>
+                                    <option>Bangladesh</option>
+                                    <option>UK</option>
+                                    <option>India</option>
+                                    <option>Pakistan</option>
+                                    <option>Ucrane</option>
+                                    <option>Canada</option>
+                                    <option>Dubai</option>
+                                </select>
+                                <select>
+                                    <option>-- State / Province / Region --</option>
+                                    <option>United States</option>
+                                    <option>Bangladesh</option>
+                                    <option>UK</option>
+                                    <option>India</option>
+                                    <option>Pakistan</option>
+                                    <option>Ucrane</option>
+                                    <option>Canada</option>
+                                    <option>Dubai</option>
+                                </select>
+                                <input type="password" placeholder="Confirm password">
+                                <input type="text" placeholder="Phone *">
+                                <input type="text" placeholder="Mobile Phone">
+                                <input type="text" placeholder="Fax">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="order-message">
+                        <p>Shipping Order</p>
+                        <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
+                        <label><input type="checkbox"> Shipping to bill address</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

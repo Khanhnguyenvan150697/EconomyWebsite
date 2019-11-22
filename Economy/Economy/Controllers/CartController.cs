@@ -11,11 +11,7 @@ namespace Economy.Controllers
     public class CartController : Controller
     {
         EconomyDbContext db = new EconomyDbContext();
-        // GET: Cart
-        public ActionResult Cart()
-        {
-            return View();
-        }
+        
         //Get cartItem
         public List<CartItemModel> GetListCartItem()
         {
@@ -28,6 +24,7 @@ namespace Economy.Controllers
             return lstCartItem;
         }
         //Add Cart item
+        [HttpPost]
         public ActionResult AddCartItem(long id, string strUrl)
         {
             Product prod = db.Products.SingleOrDefault(x => x.ID == id);
@@ -46,19 +43,24 @@ namespace Economy.Controllers
             {
                 if(prod.Quantity < checkProd.Quantity)
                 {
-                    return View("Notification");
+                    return Content("<script>alert(\"Sản phẩm đã hết hàng\")</script>");
                 }
                 checkProd.Quantity++;
-                return Redirect(strUrl);
+                checkProd.TotalPrice = checkProd.Price * checkProd.Quantity;
+                ViewBag.TotalQuantity = TotalQuantity();
+                ViewBag.TotalPrice = TotalPrice(); 
+                return PartialView("CartHeader");
             }
 
             CartItemModel icart = new CartItemModel(id);
             if(prod.Quantity < icart.Quantity)
             {
-                return View("Notification");
+                return Content("<script>alert(\"Sản phẩm đã hết hàng\")</script>");
             }
             lstCartItem.Add(icart);
-            return Redirect(strUrl);
+            ViewBag.TotalQuantity = TotalQuantity();
+            ViewBag.TotalPrice = TotalPrice();
+            return PartialView("CartHeader");
         }
         
         //Calculate total quantity
@@ -94,6 +96,59 @@ namespace Economy.Controllers
             ViewBag.TotalQuantity = TotalQuantity();
             ViewBag.TotalPrice = TotalPrice();
             return PartialView();
+        }
+
+        // GET: Cart
+        public ActionResult Cart()
+        {
+            List<CartItemModel> lstCartItem = GetListCartItem();
+            return View(lstCartItem);
+        }
+
+        // Edit cart items
+        public ActionResult EditCartItem(int id)
+        {
+            if(Session["cart"] == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
+
+            Product prod = db.Products.SingleOrDefault(x => x.ID == id);
+
+            if(prod == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            List<CartItemModel> lstCartItem = GetListCartItem();
+
+            CartItemModel icart = lstCartItem.SingleOrDefault(x => x.ID == id);
+
+            if(icart == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.Cart = lstCartItem;
+
+            return View(icart);
+        }
+
+        //edit cart item
+        [HttpPost]
+        public ActionResult EditCartItem(int ProductID, int Quantity)
+        {
+            Product checkProd = db.Products.SingleOrDefault(x => x.ID == ProductID);
+
+            List<CartItemModel> lstCartItem = GetListCartItem();
+
+            CartItemModel prod = lstCartItem.SingleOrDefault(x => x.ID == ProductID);
+
+            prod.Quantity = Quantity;
+            prod.TotalPrice = Quantity * prod.Price;
+
+            return RedirectToAction("Cart");
         }
     }
 }
