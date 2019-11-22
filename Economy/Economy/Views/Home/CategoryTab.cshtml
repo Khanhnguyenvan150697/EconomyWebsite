@@ -35,8 +35,11 @@
                                 </div>
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
-                                <a href="@Url.Action("AddCartItem","Cart", new { @id=item.ID, @strUrl=Request.Url.ToString()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = item.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
+                                {
+                                    <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
+                                    <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -56,8 +59,11 @@
                                 </div>
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
-                                <a href="@Url.Action("AddCartItem","Cart", new { @id=item.ID, @strUrl=Request.Url.ToString()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = item.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
+                                {
+                                    <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
+                                    <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -77,8 +83,11 @@
                                 </div>
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
-                                <a href="@Url.Action("AddCartItem","Cart", new { @id=item.ID, @strUrl=Request.Url.ToString()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = item.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
+                                {
+                                    <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
+                                    <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -98,8 +107,11 @@
                                 </div>
                                 <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                 <p>@item.Name</p>
-                                <a href="@Url.Action("AddCartItem","Cart", new { @id=item.ID, @strUrl=Request.Url.ToString()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = item.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
+                                {
+                                    <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
+                                    <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                }
                             </div>
                         </div>
                     </div>
@@ -126,8 +138,11 @@
                                     </div>
                                     <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
                                     <p>@item.Name</p>
-                                    <a href="@Url.Action("AddCartItem","Cart", new { @id=item.ID, @strUrl=Request.Url.ToString()})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
-                                    <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                    @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = item.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
+                                    {
+                                        <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></button>
+                                        <a href="@Url.Action("Detail","Product",new { @id=item.ID})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Chi tiết</a>
+                                    }
                                 </div>
                             </div>
                         </div>

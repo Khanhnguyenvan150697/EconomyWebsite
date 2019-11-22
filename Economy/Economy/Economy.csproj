@@ -1795,6 +1795,8 @@
     <Content Include="Views\Blog\NewBlogs.cshtml" />
     <Content Include="Views\Cart\CartHeader.cshtml" />
     <Content Include="Views\Cart\Notification.cshtml" />
+    <Content Include="Views\Cart\EditCartItem.cshtml" />
+    <Content Include="Views\Cart\EditCartItemPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
