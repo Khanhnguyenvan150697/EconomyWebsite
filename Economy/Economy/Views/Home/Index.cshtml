@@ -145,7 +145,7 @@
                                         <div class="imgShow">
                                             <img src="@item.Image" alt="" />
                                         </div>
-                                        <h2>@item.Price.Value.ToString("#,##") VNĐ</h2>
+                                        <h2>@item.Price.Value.ToString("#,##") đồng</h2>
                                         <p class="txtProductName">@item.Name</p>
                                         @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = item.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod="POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
                                         {

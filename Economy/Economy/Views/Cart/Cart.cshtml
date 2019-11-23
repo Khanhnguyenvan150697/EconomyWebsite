@@ -41,7 +41,7 @@
                                     <p>Mã sản phẩm: @item.ProductID</p>
                                 </td>
                                 <td class="cart_price">
-                                    <p>@item.Price.ToString("#,##") VNĐ</p>
+                                    <p>@item.Price.ToString("#,##") đồng</p>
                                 </td>
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
@@ -49,18 +49,42 @@
                                     </div>
                                 </td>
                                 <td class="cart_total" style="width:200px;">
-                                    <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                    <p class="cart_total_price">@item.TotalPrice.ToString("#,##") đồng</p>
                                 </td>
                                 <td class="cart_delete" style="margin-left:20px;">
                                     <a style="background:#049c87;" class="cart_quantity_delete" href="@Url.Action("EditCartItem","Cart", new { @id=item.ID})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                    <a style="background:red;" class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                    <a style="background:red;" class="cart_quantity_delete" href="@Url.Action("DeleteCartItem","Cart", new { @id=item.ID})" onclick="return confirm('Bạn muốn xóa sản phẩm này?');"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
-                         }
+                        }
+                        <tr>
+                            <td colspan="4">&nbsp;</td>
+                            <td colspan="2">
+                                <table class="table table-condensed total-result">
+                                    <tr class="shipping-cost">
+                                        <td>Số sản phẩm</td>
+                                        <td style="color:red; font-weight:600;">@ViewBag.TotalQuantity sp</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tổng tiền</td>
+                                        <td><span>@ViewBag.TotalPrice.ToString("#,##") đồng</span></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">&nbsp;</td>
+                            @using (Html.BeginForm("Order", "Cart"))
+                            {
+                                <td colspan="2">
+                                    <button class="btn btn-success" type="submit" onclick="return confirm('Click OK để xác nhận đặt hàng.');">Đặt hàng</button>
+                                </td>
+                            }
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="step-one">
+            @*<div class="step-one">
                 <h2 class="heading">Step1</h2>
             </div>
             <div class="checkout-options">
@@ -77,11 +101,11 @@
                         <a href=""><i class="fa fa-times"></i>Cancel</a>
                     </li>
                 </ul>
-            </div><!--/checkout-options-->
+            </div>
 
             <div class="register-req">
                 <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-            </div><!--/register-req-->
+            </div>
 
             <div class="shopper-informations">
                 <div class="row">
@@ -154,7 +178,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
         }
     </div>
 </section> <!--/#cart_items-->

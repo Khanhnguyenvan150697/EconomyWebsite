@@ -11,9 +11,12 @@ namespace Model.EF
     {
         public int ID { get; set; }
 
+        public long? OrderID { get; set; }
+
         public long? ProductID { get; set; }
 
-        public long? OrderID { get; set; }
+        [StringLength(250)]
+        public string ProductName { get; set; }
 
         public int? Quantity { get; set; }
 

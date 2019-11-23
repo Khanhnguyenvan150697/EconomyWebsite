@@ -66,7 +66,7 @@
                             <p>Mã sản phẩm: @Model.ID</p>
                             <img src="~/Assets/LayoutWebsite/images/product-details/rating.png" alt="" />
                             <span>
-                                <span>@Model.PromotionPrice.Value.ToString("#,##") VNĐ</span>
+                                <span>@Model.PromotionPrice.Value.ToString("#,##") đồng</span>
                             </span>
                             @if (Model.Quantity > 0)
                             {
@@ -76,11 +76,14 @@
                             {
                                 <label>Tình trạng: <span style="color: red;">Hết hàng</span></label>
                             }
-                            <button type="button" class="btn btn-fefault cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                Mua hàng
-                            </button>
-                            <p><b>Giá gốc:</b> @Model.Price.Value.ToString("#,##") VNĐ</p>
+                            @using (Ajax.BeginForm("AddCartItem", "Cart", new { @id = Model.ID, @strUrl = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CartHeader", InsertionMode = InsertionMode.Replace }))
+                            {
+                                <button type="submit" class="btn btn-fefault cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    Mua hàng
+                                </button>
+                            }
+                            <p><b>Giá gốc:</b> @Model.Price.Value.ToString("#,##") đồng</p>
                             <p><b>Danh mục:</b> @Model.CategoryName</p>
                             <p><b>Thương hiệu:</b> @Model.BrandName</p>
                             <a href=""><img src="~/Assets/LayoutWebsite/images/product-details/share.png" class="share img-responsive" alt="" /></a>

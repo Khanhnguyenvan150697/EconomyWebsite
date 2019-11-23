@@ -1797,6 +1797,8 @@
     <Content Include="Views\Cart\Notification.cshtml" />
     <Content Include="Views\Cart\EditCartItem.cshtml" />
     <Content Include="Views\Cart\EditCartItemPartial.cshtml" />
+    <Content Include="Views\Cart\OverQuantity.cshtml" />
+    <Content Include="Views\Cart\ThankYouToOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

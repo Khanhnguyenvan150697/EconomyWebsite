@@ -21,6 +21,7 @@ namespace Model.EF
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<CommentBlog> CommentBlogs { get; set; }
         public virtual DbSet<CommentProuct> CommentProucts { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
@@ -31,14 +32,6 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CartOrder>()
-                .Property(e => e.Price)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<CartOrder>()
-                .Property(e => e.TotalPrice)
-                .HasPrecision(18, 0);
-
             modelBuilder.Entity<CartOrderDetail>()
                 .Property(e => e.Price)
                 .HasPrecision(18, 0);
