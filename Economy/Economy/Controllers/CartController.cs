@@ -102,6 +102,8 @@ namespace Economy.Controllers
         public ActionResult Cart()
         {
             List<CartItemModel> lstCartItem = GetListCartItem();
+            ViewBag.TotalQuantity = TotalQuantity();
+            ViewBag.TotalPrice = TotalPrice();
             return View(lstCartItem);
         }
 
@@ -137,18 +139,96 @@ namespace Economy.Controllers
 
         //edit cart item
         [HttpPost]
-        public ActionResult EditCartItem(int ProductID, int Quantity)
+        public ActionResult EditCartItem(CartItemModel icart)
         {
-            Product checkProd = db.Products.SingleOrDefault(x => x.ID == ProductID);
+            Product checkProd = db.Products.SingleOrDefault(x => x.ID == icart.ProductID);
+
+            if(checkProd.Quantity < icart.Quantity)
+            {
+                return View("OverQuantity");
+            }
 
             List<CartItemModel> lstCartItem = GetListCartItem();
 
-            CartItemModel prod = lstCartItem.SingleOrDefault(x => x.ID == ProductID);
+            CartItemModel prodUpdate = lstCartItem.SingleOrDefault(x => x.ID == icart.ProductID);
 
-            prod.Quantity = Quantity;
-            prod.TotalPrice = Quantity * prod.Price;
+            prodUpdate.Quantity = icart.Quantity;
+            prodUpdate.TotalPrice = icart.Quantity * prodUpdate.Price;
 
             return RedirectToAction("Cart");
+        }
+
+        //Delete cart item
+        public ActionResult DeleteCartItem(int id)
+        {
+            if (Session["cart"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            Product prod = db.Products.SingleOrDefault(x => x.ID == id);
+
+            if (prod == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            List<CartItemModel> lstCartItem = GetListCartItem();
+
+            CartItemModel icart = lstCartItem.SingleOrDefault(x => x.ID == id);
+
+            if (icart == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            lstCartItem.Remove(icart);
+            return RedirectToAction("Cart");
+        }
+
+        //Create order cart func
+        public ActionResult Order()
+        {
+            if (Session["cart"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            CartOrder cartOr = new CartOrder();
+
+            cartOr.DateOrder = DateTime.Now;
+            cartOr.StatusShipping = false;
+            cartOr.Pay = false;
+            cartOr.Promotion = 0;
+            cartOr.IgnoredCart = false;
+            cartOr.DeletedCart = false;
+
+            db.CartOrders.Add(cartOr);
+            db.SaveChanges(); // savechanges để phát sinh ID của CartOrder lưu vào CartOrderDetail
+
+            List<CartItemModel> lstCartItem = GetListCartItem();
+            foreach(var item in lstCartItem)
+            {
+                CartOrderDetail cartDetail = new CartOrderDetail();
+
+                cartDetail.OrderID = cartOr.ID;
+                cartDetail.ProductID = item.ProductID;
+                cartDetail.ProductName = item.ProductName;
+                cartDetail.Quantity = item.Quantity;
+                cartDetail.Price = item.Price;
+
+                db.CartOrderDetails.Add(cartDetail);
+            }
+            db.SaveChanges();
+
+            Session["cart"] = null;
+
+            return RedirectToAction("ThankYouToOrder");
+        }
+
+        public ActionResult ThankYouToOrder()
+        {
+            return View();
         }
     }
 }

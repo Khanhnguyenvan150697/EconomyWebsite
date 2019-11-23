@@ -14,7 +14,7 @@ namespace Economy.Models
 
         public string ImageProduct { get; set; }
 
-        public long? ProductID { get; set; }
+        public long ProductID { get; set; }
 
         public decimal Price { get; set; }
 
@@ -32,6 +32,9 @@ namespace Economy.Models
             Price = prod.Price.Value;
             Quantity = 1;
             TotalPrice = Price * Quantity;
+        }
+        public CartItemModel()
+        {
         }
     }
 }

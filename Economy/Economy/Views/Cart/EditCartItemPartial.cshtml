@@ -48,7 +48,7 @@
                                             <p>Mã sản phẩm: @item.ProductID</p>
                                         </td>
                                         <td class="cart_price">
-                                            <p>@item.Price.ToString("#,##") VNĐ</p>
+                                            <p>@item.Price.ToString("#,##") đồng</p>
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
@@ -57,7 +57,7 @@
                                             </div>
                                         </td>
                                         <td class="cart_total" style="width:200px;">
-                                            <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                            <p class="cart_total_price">@item.TotalPrice.ToString("#,##") đồng</p>
                                         </td>
                                         <td class="cart_delete" style="margin-left:20px;">
                                             <input value="OK" class="btn btn-primary" type="submit" style="margin-top:0px;" />
@@ -76,7 +76,7 @@
                                         <p>Mã sản phẩm: @item.ProductID</p>
                                     </td>
                                     <td class="cart_price">
-                                        <p>@item.Price.ToString("#,##") VNĐ</p>
+                                        <p>@item.Price.ToString("#,##") đồng</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
@@ -84,7 +84,7 @@
                                         </div>
                                     </td>
                                     <td class="cart_total" style="width:200px;">
-                                        <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                        <p class="cart_total_price">@item.TotalPrice.ToString("#,##") đồng</p>
                                     </td>
                                     <td class="cart_delete" style="margin-left:20px;">
                                         <a class="cart_quantity_delete" href="@Url.Action("EditCartItem","Cart", new { @id=item.ID})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

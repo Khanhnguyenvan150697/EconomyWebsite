@@ -68,6 +68,7 @@
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\CommentBlog.cs" />
     <Compile Include="EF\CommentProuct.cs" />
+    <Compile Include="EF\Customer.cs" />
     <Compile Include="EF\EconomyDbContext.cs" />
     <Compile Include="EF\Footer.cs" />
     <Compile Include="EF\Menu.cs" />

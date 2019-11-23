@@ -37,11 +37,11 @@
                         {
                             if (Model.ProductID == item.ID)
                             {
-                                using (Html.BeginForm("EditCartItem","Cart",FormMethod.Post))
+                                using (Html.BeginForm("EditCartItem","Cart", FormMethod.Post,null))
                                 {
                                     <tr>
-                                        @*@Html.Hidden("ProductID", item.ProductID)*@
-                                        <input value="@item.ProductID" type="hidden" name="ProductID"/>
+                                        @Html.Hidden("ProductID", item.ProductID)
+                                        @*<input value="@item.ProductID" type="hidden" name="ProductID"/>*@
                                         <td class="cart_product" style="margin-top:20px;margin-bottom:20px; margin-right:20px;">
                                             <a href="@Url.Action("Detail", "Product", new { @id = item.ID })"><img style="width:110px;" src="@item.ImageProduct" alt=""></a>
                                         </td>
@@ -50,19 +50,21 @@
                                             <p>Mã sản phẩm: @item.ProductID</p>
                                         </td>
                                         <td class="cart_price">
-                                            <p>@item.Price.ToString("#,##") VNĐ</p>
+                                            <p>@item.Price.ToString("#,##") đồng</p>
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
-                                                <input value="@item.Quantity" name="Quantity" size="2" class="cart_quantity_input"/>
-                                                @*@Html.TextBox("Quantity", item.Quantity, new { @class = "cart_quantity_input", @size = "2" })*@
+                                                @*<input value="@item.Quantity" name="Quantity" size="2" class="cart_quantity_input"/>*@
+                                                @Html.TextBox("Quantity", item.Quantity, new { @class = "cart_quantity_input", @size = "2" })
                                             </div>
                                         </td>
                                         <td class="cart_total" style="width:200px;">
-                                            <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                            <p class="cart_total_price">@item.TotalPrice.ToString("#,##") đồng</p>
                                         </td>
-                                        <td class="cart_delete" style="margin-left:20px;">
-                                            <input value="OK" class="btn btn-primary" type="submit" style="margin-top:0px;" />
+                                        <td class="cart_delete">
+                                            @*<input value="OK" class="btn btn-primary" type="submit" style="margin-top:0px;" />*@
+                                            <button class="btn btn-primary" type="submit" style="margin-top:0px;"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                            <a style="background:red;" class="cart_quantity_delete" href="@Url.Action("DeleteCartItem","Cart", new { @id=item.ID})" onclick="return confirm('Bạn muốn xóa sản phẩm này?');"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                                 }
@@ -78,7 +80,7 @@
                                         <p>Mã sản phẩm: @item.ProductID</p>
                                     </td>
                                     <td class="cart_price">
-                                        <p>@item.Price.ToString("#,##") VNĐ</p>
+                                        <p>@item.Price.ToString("#,##") đồng</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
@@ -86,11 +88,11 @@
                                         </div>
                                     </td>
                                     <td class="cart_total" style="width:200px;">
-                                        <p class="cart_total_price">@item.TotalPrice.ToString("#,##") VNĐ</p>
+                                        <p class="cart_total_price">@item.TotalPrice.ToString("#,##") đồng</p>
                                     </td>
                                     <td class="cart_delete" style="margin-left:20px;">
-                                        <a class="cart_quantity_delete" href="@Url.Action("EditCartItem","Cart", new { @id=item.ID})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                        <a style="background:#049c87;" class="cart_quantity_delete" href="@Url.Action("EditCartItem","Cart", new { @id=item.ID})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a style="background:red;" class="cart_quantity_delete" href="@Url.Action("DeleteCartItem","Cart", new { @id=item.ID})"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                             }
