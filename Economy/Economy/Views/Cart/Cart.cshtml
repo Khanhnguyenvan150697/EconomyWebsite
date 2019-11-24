@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
-}
 
+    var _session = ViewBag.Session as Economy.Common.UserLogin;
+}
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <section id="cart_items">
     <div class="container">
         @if (Model.Count == 0)
         {
-            <h2 class="alert alert-danger">Giỏ hàng rỗng | Tiếp tục mua hàng @Html.ActionLink("tại đây","Index","Home")</h2>
+            <h2 class="alert alert-danger">Giỏ hàng rỗng | Tiếp tục mua hàng @Html.ActionLink("tại đây", "Index", "Home")</h2>
         }
         else
         {
@@ -72,113 +74,102 @@
                                 </table>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="4">&nbsp;</td>
-                            @using (Html.BeginForm("Order", "Cart"))
-                            {
-                                <td colspan="2">
-                                    <button class="btn btn-success" type="submit" onclick="return confirm('Click OK để xác nhận đặt hàng.');">Đặt hàng</button>
-                                </td>
-                            }
-                        </tr>
                     </tbody>
                 </table>
             </div>
-            @*<div class="step-one">
-                <h2 class="heading">Step1</h2>
-            </div>
-            <div class="checkout-options">
-                <h3>New User</h3>
-                <p>Checkout options</p>
-                <ul class="nav">
-                    <li>
-                        <label><input type="checkbox"> Register Account</label>
-                    </li>
-                    <li>
-                        <label><input type="checkbox"> Guest Checkout</label>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-times"></i>Cancel</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="register-req">
-                <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-            </div>
-
-            <div class="shopper-informations">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="shopper-info">
-                            <p>Shopper Information</p>
-                            <form>
-                                <input type="text" placeholder="Display Name">
-                                <input type="text" placeholder="User Name">
-                                <input type="password" placeholder="Password">
-                                <input type="password" placeholder="Confirm password">
-                            </form>
-                            <a class="btn btn-primary" href="">Get Quotes</a>
-                            <a class="btn btn-primary" href="">Continue</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 clearfix">
-                        <div class="bill-to">
-                            <p>Bill To</p>
-                            <div class="form-one">
-                                <form>
-                                    <input type="text" placeholder="Company Name">
-                                    <input type="text" placeholder="Email*">
-                                    <input type="text" placeholder="Title">
-                                    <input type="text" placeholder="First Name *">
-                                    <input type="text" placeholder="Middle Name">
-                                    <input type="text" placeholder="Last Name *">
-                                    <input type="text" placeholder="Address 1 *">
-                                    <input type="text" placeholder="Address 2">
-                                </form>
+            using (Html.BeginForm("Order", "Cart"))
+            {
+                <div class="shopper-informations">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <div class="shopper-info">
+                                @if (Session["USER_SESSION"] == null)
+                                {
+                                    <p>Vui lòng nhập thông tin tại đây</p>
+                                    <input class="form-control" type="text" placeholder="Họ và tên..." name="CustomerName" id="txtHoVaTen">
+                                    <p style="color:red; font-size:15px;" id="tb_username"></p>
+                                    <br />
+                                    <input class="form-control" type="text" placeholder="Email..." name="Email" id="txtMail">
+                                    <p style="color:red; font-size:15px;" id="tb_email"></p>
+                                    <br />
+                                    <input class="form-control" type="text" placeholder="Số điện thoại..." name="Phone" id="txtPhone">
+                                    <p style="color:red; font-size:15px;" id="tb_phone"></p>
+                                    <br />
+                                    <input class="form-control" type="text" placeholder="Địa chỉ..." name="Address" id="txtDiaChi">
+                                    <p style="color:red; font-size:15px;" id="tb_diachi"></p>
+                                }
+                                else
+                                {
+                                    <p>Vui lòng nhập thông tin tại đây</p>
+                                    <input class="form-control" type="text" value="@_session.UserName" name="CustomerName" id="txtHoVaTen" disabled>
+                                    <p style="color:red; font-size:15px;" id="tb_username"></p>
+                                    <br />
+                                    <input class="form-control" type="text" value="@_session.UserEmail" name="Email" id="txtMail" disabled>
+                                    <p style="color:red; font-size:15px;" id="tb_email"></p>
+                                    <br />
+                                    <input class="form-control" type="text" placeholder="Số điện thoại..." name="Phone" id="txtPhone">
+                                    <p style="color:red; font-size:15px;" id="tb_phone"></p>
+                                    <br />
+                                    <input class="form-control" type="text" placeholder="Địa chỉ..." name="Address" id="txtDiaChi">
+                                    <p style="color:red; font-size:15px;" id="tb_diachi"></p>
+                                }
+                                <br />
+                                <button id="btnDatHang" class="btn btn-success" type="submit" onclick="return confirm('Click OK để xác nhận đặt hàng.');">Đặt hàng</button>
                             </div>
-                            <div class="form-two">
-                                <form>
-                                    <input type="text" placeholder="Zip / Postal Code *">
-                                    <select>
-                                        <option>-- Country --</option>
-                                        <option>United States</option>
-                                        <option>Bangladesh</option>
-                                        <option>UK</option>
-                                        <option>India</option>
-                                        <option>Pakistan</option>
-                                        <option>Ucrane</option>
-                                        <option>Canada</option>
-                                        <option>Dubai</option>
-                                    </select>
-                                    <select>
-                                        <option>-- State / Province / Region --</option>
-                                        <option>United States</option>
-                                        <option>Bangladesh</option>
-                                        <option>UK</option>
-                                        <option>India</option>
-                                        <option>Pakistan</option>
-                                        <option>Ucrane</option>
-                                        <option>Canada</option>
-                                        <option>Dubai</option>
-                                    </select>
-                                    <input type="password" placeholder="Confirm password">
-                                    <input type="text" placeholder="Phone *">
-                                    <input type="text" placeholder="Mobile Phone">
-                                    <input type="text" placeholder="Fax">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="order-message">
-                            <p>Shipping Order</p>
-                            <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-                            <label><input type="checkbox"> Shipping to bill address</label>
                         </div>
                     </div>
                 </div>
-            </div>*@
+                <br /><br />
+            }
+            <button id="btnclick">click here</button>
         }
     </div>
 </section> <!--/#cart_items-->
+
+<script>
+    $('#btnDatHang').click(function () {
+
+        var err = 0;
+        var emailValidString = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        //Họ và tên
+        if ($('#txtHoVaTen').val() == "") {
+            $('#tb_username').text('Bạn chưa nhập họ và tên.');
+            err++;
+        } else {
+            $('#tb_username').text("");
+        }
+
+        //email
+        if (!emailValidString.test($('#txtMail').val())) {
+            $('#tb_email').text('Email không hợp lệ.');
+            err++;
+        } else {
+            $('#tb_email').text("");
+        }
+
+        //Số điện thoại
+        if ($('#txtPhone').val() == "") {
+            $('#tb_phone').text('Bạn chưa nhập số điện thoại.');
+            err++;
+        } else {
+            $('#tb_phone').text("");
+        }
+
+        //Địa chỉ
+        if ($('#txtDiaChi').val() == "") {
+            $('#tb_diachi').text('Bạn chưa nhập địa chỉ.');
+            err++;
+        } else {
+            $('#tb_diachi').text("");
+        }
+
+        if (err != 0) {
+            // Ngăn sự kiện click
+            return false;
+        }
+    });
+</script>

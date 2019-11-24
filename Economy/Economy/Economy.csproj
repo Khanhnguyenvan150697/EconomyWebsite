@@ -1728,6 +1728,7 @@
     <Content Include="Content\exzoom-master\README.md" />
     <Content Include="Content\exzoom-master\src\jquery.exzoom.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Cart.js" />
     <Content Include="Scripts\Cktool.js" />
     <Content Include="Scripts\CKtool_edit.js" />
     <Content Include="Scripts\exzoom.js" />

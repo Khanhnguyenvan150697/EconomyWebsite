@@ -36,6 +36,8 @@ namespace Economy.Controllers
                         var _user = new User() {
                             UserName = register.UserName,
                             Email = register.Email,
+                            Phone = register.Phone,
+                            Address = register.Address,
                             Password = register.Password,
                             Avatar = register.Avatar,
                             CreatedDate = DateTime.Now
@@ -71,11 +73,15 @@ namespace Economy.Controllers
                 if (checkAcc.CheckAccount(user.Email, user.Password) == true)
                 {
                     var userSession = new UserLogin();
+
                     var _user = new UserDao().GetUserByID(user.Email);
+
                     userSession.UserID = _user.ID;
                     userSession.UserName = _user.UserName;
                     userSession.UserEmail = _user.Email;
                     userSession.Avatar = _user.Avatar;
+                    userSession.UserPhone = _user.Phone;
+                    userSession.UserAddress = _user.Address;
 
                     //Add 2 object into Session.Add();
                     Session.Add(CommonConstant.USER_SESSION, userSession);
