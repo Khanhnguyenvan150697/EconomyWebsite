@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Economy.Models;
 using Model.EF;
+using Economy.Common;
 
 namespace Economy.Controllers
 {
@@ -104,6 +105,7 @@ namespace Economy.Controllers
             List<CartItemModel> lstCartItem = GetListCartItem();
             ViewBag.TotalQuantity = TotalQuantity();
             ViewBag.TotalPrice = TotalPrice();
+            ViewBag.Session = Session[Common.CommonConstant.USER_SESSION];
             return View(lstCartItem);
         }
 
@@ -187,15 +189,35 @@ namespace Economy.Controllers
         }
 
         //Create order cart func
-        public ActionResult Order()
+        public ActionResult Order(Customer cus)
         {
             if (Session["cart"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            CartOrder cartOr = new CartOrder();
+            Customer customer = new Customer();
+            if(Session[Common.CommonConstant.USER_SESSION] == null)
+            {
+                customer = cus;
+                db.Customers.Add(customer);
+                db.SaveChanges();
 
+            }
+            else
+            {
+                UserLogin _user = Session[Common.CommonConstant.USER_SESSION] as UserLogin;
+                customer.CustomerName = _user.UserName;
+                customer.Email = _user.UserEmail;
+                customer.Address = cus.Address;
+                customer.Phone = cus.Phone;
+                customer.UserID = _user.UserID;
+
+                db.Customers.Add(customer);
+                db.SaveChanges();
+            }
+            CartOrder cartOr = new CartOrder();
+            cartOr.UserID = customer.ID;
             cartOr.DateOrder = DateTime.Now;
             cartOr.StatusShipping = false;
             cartOr.Pay = false;
