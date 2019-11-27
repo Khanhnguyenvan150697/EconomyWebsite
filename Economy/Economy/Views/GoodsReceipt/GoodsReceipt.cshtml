@@ -1,0 +1,148 @@
+﻿@using Model.EF;
+@model GoodsReceipt
+@{
+    ViewBag.Title = "GoodsReceipt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var listSuppliers = ViewBag.Supplier as List<Supplier>;
+    var listProductName = ViewBag.ProductName as List<Product>;
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add new product</h4>
+                        <p class="card-category">E-Shopper</p>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Nhà cung cấp</label>
+                                        </div>
+                                        @*@Html.DropDownList("Nhà cung cấp", ViewBag.Supplier as SelectList, "Chọn nhà cung cấp", new { @class = "custom-select col-md-6" })*@
+                                        <select class="custom-select col-md-6" name="SupplierID">
+                                            @foreach (var item in listSuppliers)
+                                            {
+                                                <option value="@item.ID">@item.SupplierName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Ngày nhập</label>
+                                        </div>
+                                        @Html.TextBoxFor(Model => Model.CreatedDate, null, new { @type = "Date", @class = "form-control col-md-6" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="table-responsive" id="goodsReceipt">
+                                    <table class="table" id="tblGoodsReceipt">
+                                        <tr class="trAppend" style="display:none;">
+                                            <td>
+                                                <select class="custom-select ProductName" name="">
+                                                    @foreach (var item in listProductName)
+                                                    {
+                                                        <option value="@item.ID">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input name="" class="form-control col-md-6 txtPrice" style="margin-left:140px;" placeholder="0" />
+                                            </td>
+                                            <td>
+                                                <input name="" class="form-control col-md-6 txtQuantity" style="margin-left:140px;" placeholder="0" />
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger btnDelete"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-primary" data-id="-1">
+                                            <th style="width:200px;">Tên sản phẩm</th>
+                                            <th style="width:400px;">Nhập đơn giá</th>
+                                            <th style="width:400px;">Nhập số lượng</th>
+                                            <th>Xóa</th>
+                                        </tr>
+                                    </table>
+                                    <button class="btn btn-primary" id="btnAdd"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button class="btn btn-success">Xác nhận</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // append tr
+        $('#btnAdd').off('click').on('click', function (e) {
+            e.preventDefault();
+            var id_cuoi = $('.table').find('tr:last-child').attr('data-id');
+            i = parseInt(id_cuoi) + 1;
+            var tdContent = $('.trAppend').html();
+            var trContent = "<tr class=\"trAppended\" data-id="+ i +">" + tdContent + "</tr>";
+            $('#tblGoodsReceipt').append(trContent);
+
+            loadID();
+        });
+
+        function loadID() {
+            $('.trAppended').each(function () {
+                var id = $(this).attr('data-id');
+                var ProductID = "[" + id + "].ProductID";
+                var ProductQuantity = "[" + id + "].ProductQuantity";
+                var ProductPrice = "[" + id + "].ProductPrice";
+
+                $(this).find('.ProductName').attr('name', ProductID);
+                $(this).find('.txtPrice').attr('name', ProductPrice);
+                $(this).find('.txtQuantity').attr('name', ProductQuantity);
+
+            });
+        };
+
+        function UpdateID() {
+             var id_cuoi = $('.table').find('.text-primary').attr('data-id');
+            i = parseInt(id_cuoi) + 1;
+
+            $('.trAppended').each(function () {
+                var id = i;
+                $(this).attr('data-id', i);
+                //Update id after deleted
+                var ProductID = "[" + id + "].ProductID"; // create product id
+                var ProductQuantity = "[" + id + "].ProductQuantity"; // create product quantity
+                var ProductPrice = "[" + id + "].ProductPrice"; // create product price
+
+                $(this).find('.ProductName').attr('name', ProductID); 
+                $(this).find('.txtPrice').attr('name', ProductPrice);
+                $(this).find('.txtQuantity').attr('name', ProductQuantity);
+
+                i++;
+
+            });
+        };
+
+        // delete tr
+        $('body').delegate('.btnDelete', 'click', function (e) {
+            e.preventDefault();
+            $(this).closest('.trAppended').remove();
+            UpdateID();
+        });
+
+    });
+</script>

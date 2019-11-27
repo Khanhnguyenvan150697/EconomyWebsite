@@ -147,6 +147,7 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\GoodsReceiptController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginAdminController.cs" />
@@ -1728,7 +1729,6 @@
     <Content Include="Content\exzoom-master\README.md" />
     <Content Include="Content\exzoom-master\src\jquery.exzoom.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\Cart.js" />
     <Content Include="Scripts\Cktool.js" />
     <Content Include="Scripts\CKtool_edit.js" />
     <Content Include="Scripts\exzoom.js" />
@@ -1800,6 +1800,7 @@
     <Content Include="Views\Cart\EditCartItemPartial.cshtml" />
     <Content Include="Views\Cart\OverQuantity.cshtml" />
     <Content Include="Views\Cart\ThankYouToOrder.cshtml" />
+    <Content Include="Views\GoodsReceipt\GoodsReceipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

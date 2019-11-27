@@ -46,6 +46,9 @@ namespace Model.EF
 
         public string Detail { get; set; }
 
+        [StringLength(250)]
+        public string SupplierName { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
         [StringLength(50)]
