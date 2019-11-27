@@ -23,10 +23,13 @@ namespace Model.EF
         public virtual DbSet<CommentProuct> CommentProucts { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
+        public virtual DbSet<GoodsReceipt> GoodsReceipts { get; set; }
+        public virtual DbSet<GoodsReceiptDetail> GoodsReceiptDetails { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -55,6 +58,10 @@ namespace Model.EF
             modelBuilder.Entity<Footer>()
                 .Property(e => e.ID)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<GoodsReceiptDetail>()
+                .Property(e => e.ProductPrice)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Code)
