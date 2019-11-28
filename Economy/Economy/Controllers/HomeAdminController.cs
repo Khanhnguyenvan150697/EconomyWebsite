@@ -59,7 +59,8 @@ namespace Economy.Controllers
                     MoreImg4 = prod.Image4,
                     MoreImg5 = prod.Image5,
                     Description = prod.Description,
-                    Detail = prod.Detail
+                    Detail = prod.Detail,
+                    Deleted = false
                 };
                 db.Products.Add(item);
                 db.SaveChanges();

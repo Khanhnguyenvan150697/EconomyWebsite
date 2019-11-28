@@ -1,0 +1,95 @@
+﻿@model Model.EF.Product
+
+@{
+    ViewBag.Title = "GoodsReceiptProductDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add new product</h4>
+                        <p class="card-category">E-Shopper</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="@Model.Image" width="450" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card" style="width: 18rem;">
+                                    <span class="alert alert-success">Thông tin sản phẩm</span>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>Tên sản phẩm: @Model.Name</li>
+                                            <li>Mã sản phẩm: @Model.ID</li>
+                                            <li>Thương hiệu: @Model.BrandName</li>
+                                            <li>Danh mục: @Model.CategoryName</li>
+                                            <li>Số lượng: @Model.Quantity</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("GoodsReceiptProductDetail", "GoodsReceipt", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Nhà cung cấp</label>
+                                        </div>
+                                        <select class="custom-select col-md-6" name="SupplierID">
+                                            @foreach (var item in ViewBag.Supplier)
+                                            {
+                                                <option value="@item.ID">@item.SupplierName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Ngày nhập</label>
+                                        </div>
+                                        @Html.TextBoxFor(Model => Model.CreatedDate, null, new { @type = "Date", @class = "form-control col-md-6" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="table-responsive" id="goodsReceipt">
+                                    <table class="table" id="tblGoodsReceipt">
+                                        <tr class="text-primary" data-id="-1">
+                                            <th style="width:200px;">Tên sản phẩm</th>
+                                            <th style="width:400px;">Nhập đơn giá</th>
+                                            <th style="width:400px;">Nhập số lượng</th>
+                                        </tr>
+                                        <tr class="trAppend">
+                                            <td>
+                                                <select class="custom-select ProductName" name="ProductID">
+                                                    <option value="@Model.ID">@Model.Name</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input name="ProductPrice" class="form-control col-md-6 txtPrice" style="margin-left:140px;" placeholder="0" />
+                                            </td>
+                                            <td>
+                                                <input name="ProductQuantity" class="form-control col-md-6 txtQuantity" style="margin-left:140px;" placeholder="0" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <button class="btn btn-success" id="btnSubmit" type="submit">Xác nhận</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

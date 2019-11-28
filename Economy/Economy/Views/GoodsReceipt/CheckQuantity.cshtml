@@ -1,0 +1,52 @@
+﻿@using Model.EF;
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "CheckQuantity";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title " style="font-weight:600">DANH SÁCH SẢN PHẨM</h4>
+                <p class="card-category">E-shopper</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr class=" text-primary">
+                            <th>ID</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Thương hiệu</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th></th>
+                        </tr>
+                        <tbody>
+                            @if (Model.Count() == 0)
+                            {
+                                <h2>Không có sản phẩm</h2>
+                            }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td><img style="width:100px;" src="@item.Image" /></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.BrandName</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>@item.Price</td>
+                                    <td style="color:red;">@item.Quantity</td>
+                                    <td>@Html.ActionLink("Nhập hàng", "GoodsReceiptProductDetail", "GoodsReceipt", new { @id = item.ID }, new { @target = "_blank" })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
