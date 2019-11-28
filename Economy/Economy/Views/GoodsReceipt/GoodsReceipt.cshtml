@@ -76,7 +76,7 @@
                                         </tr>
                                     </table>
                                     <button class="btn btn-primary" id="btnAdd"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                    <button class="btn btn-success">Xác nhận</button>
+                                    <button class="btn btn-success" id="btnSubmit" type="submit">Xác nhận</button>
                                 </div>
                             </div>
                         </div>
@@ -144,5 +144,40 @@
             UpdateID();
         });
 
+        $('#btnSubmit').click(function () {
+            if (checkValuePrice() == false) {
+                return false; // Ngăn hành động submit về server
+            };
+             if (checkValueQuantity() == false) {
+                return false; // Ngăn hành động submit về server
+            };
+        });
+        
+        //check value of .txtPrice
+        function checkValuePrice() {
+            var check = true;
+            $('.txtPrice').each(function () {
+                var value = $(this).val();
+                if (isNaN(value) == true || parseInt(value) < 0) {
+                    alert('Đơn giá không hợp lệ');
+                    check = false;
+                    return check;
+                };
+            });
+            return check;
+        };
+        //check value of .txtPrice
+        function checkValueQuantity() {
+            var check = true;
+            $('.txtQuantity').each(function () {
+                var value = $(this).val();
+                if (isNaN(value) == true || parseInt(value) < 0) {
+                    alert('Số lượng không hợp lệ');
+                    check = false;
+                    return check;
+                };
+            });
+            return check;
+        };
     });
 </script>

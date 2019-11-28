@@ -1801,6 +1801,8 @@
     <Content Include="Views\Cart\OverQuantity.cshtml" />
     <Content Include="Views\Cart\ThankYouToOrder.cshtml" />
     <Content Include="Views\GoodsReceipt\GoodsReceipt.cshtml" />
+    <Content Include="Views\GoodsReceipt\CheckQuantity.cshtml" />
+    <Content Include="Views\GoodsReceipt\GoodsReceiptProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
