@@ -18823,11 +18823,10 @@ Copyright (c) 2015 Daniel Eden
     background-color: #ffa500;
     transition: 1s;
 }
-
 .table .text-primary th{
     text-align: center;
 }
-.table tbody tr td {
+.homeTblContent tbody tr td {
     text-align: center;
 }
 .ProdName:hover {
@@ -18836,3 +18835,4 @@ Copyright (c) 2015 Daniel Eden
     font-weight: 600;
     transition: 150ms;
 }
+

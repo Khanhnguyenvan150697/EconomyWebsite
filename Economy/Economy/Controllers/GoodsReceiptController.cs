@@ -7,7 +7,7 @@ using Model.EF;
 
 namespace Economy.Controllers
 {
-    public class GoodsReceiptController : Controller
+    public class GoodsReceiptController : BaseController
     {
         EconomyDbContext db = new EconomyDbContext();
 

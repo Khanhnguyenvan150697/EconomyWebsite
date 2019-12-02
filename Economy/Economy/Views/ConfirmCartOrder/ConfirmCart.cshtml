@@ -1,0 +1,64 @@
+﻿@using Model.EF;
+@model List<CartOrderDetail>
+
+@{
+    ViewBag.Title = "ConfirmCart";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var customer = ViewBag.NameCustomer as Customer;
+    var cartOrderID = ViewBag.IDCartOrder as CartOrder;
+    var lstProducts = ViewBag.Products as List<Product>;
+}
+<style>
+    .customerName {
+        width: 250px;
+    }
+    .tblHead{
+        color: red;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight:400;
+    }
+</style>
+
+<div class="alert alert-success customerName" role="alert">
+    Khách hàng: @customer.CustomerName
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Mã đơn: <span class="tblHead">@cartOrderID.ID</span></th>
+            <th scope="col">Mã khách hàng: <span class="tblHead">@customer.ID</span></th>
+            <th scope="col">Tên khách hàng: <span class="tblHead">@customer.CustomerName</span></th>
+            <th scope="col">Ngày đặt: <span class="tblHead">@cartOrderID.DateOrder</span></th>
+        </tr>
+    </thead>
+</table>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sản phẩm</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @foreach (var prod in lstProducts)
+                {
+                    if(item.ProductID == prod.ID)
+                    {
+                        <th scope="row">@prod.Name</th>
+                    <td><img width="100" src="@prod.Image"/></td>
+                    }
+                }
+                <td>@item.Quantity</td>
+                <td>@(item.Price * item.Quantity) đồng</td>
+            </tr>
+        }
+    </tbody>
+</table>

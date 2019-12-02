@@ -1,0 +1,70 @@
+﻿@using Model.EF;
+@model List<CartOrder>
+
+@{
+    ViewBag.Title = "NotPayCart";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var cus = ViewBag.Customers as List<Customer>;
+}
+
+<style>
+    .tdConfirmCarrt {
+        text-align: left;
+    }
+</style>
+<table class="table table-striped table-primary">
+    <thead>
+        <tr>
+            <th scope="col">Mã đơn</th>
+            <th scope="col">Khách hàng</th>
+            <th scope="col">Ngày đặt</th>
+            <th scope="col">Tình trạng giao</th>
+            <th scope="col">Thanh toán</th>
+            <th scope="col">Hủy đơn</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.ID</th>
+                @foreach (var name in cus)
+                {
+                    if (item.UserID == name.ID)
+                    {
+                        <td class="tdConfirmCarrt">@name.CustomerName</td>
+                    }
+                }
+                <td class="tdConfirmCarrt">@item.DateOrder</td>
+                @if (item.StatusShipping == false)
+                {
+                    <td class="tdConfirmCarrt">Chưa giao</td>
+                }
+                else
+                {
+                    <td class="tdConfirmCarrt">Đã giao</td>
+                }
+                @if (item.Pay == false)
+                {
+                    <td class="tdConfirmCarrt">Chưa thanh toán</td>
+                }
+                else
+                {
+                    <td class="tdConfirmCarrt">Rồi</td>
+                }
+                @if (item.DeletedCart == false)
+                {
+                    <td class="tdConfirmCarrt">Chưa hủy</td>
+                }
+                else
+                {
+                    <td class="tdConfirmCarrt">Đã hủy</td>
+                }
+                <th scope="col"><a href="#" target="_blank">Duyệt đơn</a></th>
+            </tr>
+        }
+    </tbody>
+</table>
+
