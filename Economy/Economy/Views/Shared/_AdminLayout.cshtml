@@ -39,37 +39,37 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="@Url.Action("Create","HomeAdmin")">
                             <i class="material-icons">person</i>
-                            <p>Create new products</p>
+                            <p>Thêm sản phẩm mới</p>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="@Url.Action("BlogList","HomeAdmin")">
                             <i class="material-icons">content_paste</i>
-                            <p>Blog list</p>
+                            <p>Danh sách bài viết</p>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="@Url.Action("NotPayCart", "ConfirmCartOrder")">
                             <i class="material-icons">library_books</i>
-                            <p>Đơn hàng chưa giao</p>
+                            <p>Đơn chưa giao</p>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="@Url.Action("PayButNotShipping", "ConfirmCartOrder")">
                             <i class="material-icons">library_books</i>
-                            <p>Đơn hàng chưa thanh toán</p>
+                            <p>Đơn thanh toán/chưa giao</p>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="@Url.Action("PayAndShip", "ConfirmCartOrder")">
                             <i class="material-icons">library_books</i>
-                            <p>Đơn hàng đã chốt</p>
+                            <p>Đơn đã chốt</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./notifications.html">
+                        <a class="nav-link" href="@Url.Action("GoodsReceipt","GoodsReceipt")">
                             <i class="material-icons">notifications</i>
-                            <p>Notifications</p>
+                            <p>Nhập hàng</p>
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -104,7 +104,7 @@
                     <div class="collapse navbar-collapse justify-content-end">
                         <form class="navbar-form">
                             <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" id="txtSearch" placeholder="Search...">
+                                <input type="text" value="" class="form-control" id="txtSearch" placeholder="Tìm kiếm...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
                                     <i class="material-icons">search</i>
                                     <div class="ripple-container"></div>

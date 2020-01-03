@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Edit product</h4>
+                        <h4 class="card-title">Chỉnh sửa sản phẩm</h4>
                         <p class="card-category">E-Shopper</p>
                     </div>
                     <div class="card-body">
@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Product name</label>
+                                        <label class="bmd-label-floating">Tên sản phẩm</label>
                                         @Html.TextBoxFor(Model => Model.Name, null, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(Model => Model.Name, null, new { @style = "color:red" })
                                     </div>
@@ -30,7 +30,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect01">Brand</label>
+                                                <label class="input-group-text" for="inputGroupSelect01">Thương hiệu</label>
                                             </div>
                                             @Html.DropDownListFor(Model => Model.BrandName, ViewBag.Brand as SelectList, "", new { @class = "custom-select col-md-12" })
                                             @Html.ValidationMessageFor(Model => Model.BrandName, null, new { @style = "color:red" })
@@ -42,7 +42,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                                                <label class="input-group-text" for="inputGroupSelect01">Danh mục</label>
                                             </div>
                                             @Html.DropDownListFor(Model => Model.CategoryName, ViewBag.Cates as SelectList, "", new { @class = "custom-select col-md-12" })
                                             @Html.ValidationMessageFor(Model => Model.CategoryName, null, new { @style = "color:red" })
@@ -53,14 +53,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Price</label>
+                                        <label class="bmd-label-floating">Đơn giá</label>
                                         @Html.TextBoxFor(Model => Model.Price, null, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(Model => Model.Price, null, new { @style = "color:red" })
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="bmd-label-floating">Promotion price</label>
+                                        <label class="bmd-label-floating">Giá khuyến mãi</label>
                                         @Html.TextBoxFor(Model => Model.PromotionPrice, null, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(Model => Model.PromotionPrice, null, new { @style = "color:red" })
                                     </div>
@@ -68,12 +68,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <label class="bmd-label-floating">Quantity</label>
+                                    <label class="bmd-label-floating">Số lượng</label>
                                     @Html.TextBoxFor(Model => Model.Quantity, null, new { @class = "form-control", @type = "number" })
                                     @Html.ValidationMessageFor(Model => Model.Quantity, null, new { @style = "color:red" })
                                 </div>
                                 <div class="col-md-10">
-                                    <label class="bmd-label-floating">Image</label>
+                                    <label class="bmd-label-floating">Ảnh sản phẩm</label>
                                     <input type="button" value="Select Image" id="selectImg" class="controls" multiple />
                                     @Html.TextBoxFor(Model => Model.Image, new { @class = "form-control", @id = "linkUrlImg" })
                                 </div>
@@ -81,27 +81,27 @@
                             <br />
                             <div class="row">
                                 <div class="col-md-2">
-                                    <label class="bmd-label-floating">Image1</label>
+                                    <label class="bmd-label-floating">Ảnh mô tả 1</label>
                                     <input type="button" value="img1" id="selectImg1" class="controls" name="file" />
                                     @Html.TextBoxFor(Model => Model.MoreImg1, new { @class = "form-control", @id = "linkUrlImg1" })
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="bmd-label-floating">Image2</label>
+                                    <label class="bmd-label-floating">Ảnh mô tả 2</label>
                                     <input type="button" value="img2" id="selectImg2" class="controls" name="file" />
                                     @Html.TextBoxFor(Model => Model.MoreImg2, new { @class = "form-control", @id = "linkUrlImg2" })
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="bmd-label-floating">Image3</label>
+                                    <label class="bmd-label-floating">Ảnh mô tả 3</label>
                                     <input type="button" value="img3" id="selectImg3" class="controls" name="file" />
                                     @Html.TextBoxFor(Model => Model.MoreImg3, new { @class = "form-control", @id = "linkUrlImg3" })
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="bmd-label-floating">Image4</label>
+                                    <label class="bmd-label-floating">Ảnh mô tả 4</label>
                                     <input type="button" value="img4" id="selectImg4" class="controls" name="file" />
                                     @Html.TextBoxFor(Model => Model.MoreImg4, new { @class = "form-control", @id = "linkUrlImg4" })
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="bmd-label-floating">Image5</label>
+                                    <label class="bmd-label-floating">Ảnh mô tả 5</label>
                                     <input type="button" value="img5" id="selectImg5" class="controls" name="file" />
                                     @Html.TextBoxFor(Model => Model.MoreImg5, new { @class = "form-control", @id = "linkUrlImg5" })
                                 </div>
@@ -109,7 +109,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label class="bmd-label-floating">Detail</label>
+                                    <label class="bmd-label-floating">Thông số kỹ thuật</label>
                                     @Html.TextAreaFor(Model => Model.Detail, new { @class = "form-control", @id = "txtDetail" })
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description</label>
+                                        <label>Đánh giá sản phẩm</label>
                                         <div class="form-group">
                                             @Html.TextAreaFor(Model => Model.Description, new { @id = "txtNoidung" })
                                             @Html.ValidationMessageFor(Model => Model.Description, null, new { @style = "color:red" })
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right" id="addProd" onclick="return confirm('Are you sure ?')">Finish</button>
+                            <button type="submit" class="btn btn-primary pull-right" id="addProd" onclick="return confirm('Are you sure ?')">XONG</button>
                             <div class="clearfix"></div>
                         }
                     </div>
