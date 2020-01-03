@@ -29,7 +29,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <th scope="row">@item.ID</th>
+                <td scope="row" >@item.ID</td>
                 @foreach (var name in cus)
                 {
                     if (item.UserID == name.ID)
@@ -62,7 +62,7 @@
                 {
                     <td class="tdConfirmCarrt">Đã hủy</td>
                 }
-                <th scope="col"><a href="#" target="_blank">Duyệt đơn</a></th>
+                 <th scope="col">@Html.ActionLink("Duyệt đơn","ConfirmCart", new { @id=item.ID}, new { @target="_blank"})</th>
             </tr>
         }
     </tbody>

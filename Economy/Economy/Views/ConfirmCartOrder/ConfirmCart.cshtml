@@ -8,21 +8,21 @@
     var customer = ViewBag.NameCustomer as Customer;
     var cartOrderID = ViewBag.IDCartOrder as CartOrder;
     var lstProducts = ViewBag.Products as List<Product>;
+    var tongtien = (decimal)ViewBag.Tongtien;
 }
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
 <style>
-    .customerName {
-        width: 250px;
-    }
-    .tblHead{
+    .tblHead {
         color: red;
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-weight:400;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 400;
+    }
+
+    #tongtien {
     }
 </style>
-
-<div class="alert alert-success customerName" role="alert">
-    Khách hàng: @customer.CustomerName
-</div>
 
 <table class="table">
     <thead>
@@ -34,7 +34,26 @@
         </tr>
     </thead>
 </table>
-
+<div class="row">
+    <div class="col-md-3">
+        <span>Thanh toán</span>
+        <select class="custom-select" name="thanhtoan" id="thanhtoan">
+            <option>-----</option>
+            <option>Đã thanh toán</option>
+            <option>Chưa thanh toán</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <span>Tình trạng giao hàng</span>
+        <select class="custom-select" name="giaohang" id="giaohang">
+            <option>-----</option>
+            <option>Đã giao</option>
+            <option>Chưa giao</option>
+        </select>
+    </div>
+    <input value="@cartOrderID.ID" type="hidden" name="cartOrderId" id="IDcartOrder"/>
+</div>
+<br /><br />
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -50,15 +69,130 @@
             <tr>
                 @foreach (var prod in lstProducts)
                 {
-                    if(item.ProductID == prod.ID)
+                    if (item.ProductID == prod.ID)
                     {
                         <th scope="row">@prod.Name</th>
-                    <td><img width="100" src="@prod.Image"/></td>
+                        <td><img width="100" src="@prod.Image" /></td>
                     }
                 }
                 <td>@item.Quantity</td>
-                <td>@(item.Price * item.Quantity) đồng</td>
+                <td>@((item.Price * item.Quantity).Value.ToString("#,##")) đồng</td>
             </tr>
         }
     </tbody>
 </table>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4" id="tongtien">
+        <span>Tổng tiền: </span><span>@tongtien.ToString("#,##") đồng</span>
+    </div>
+</div>
+
+<div id="tblCartOrderInfo">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="alert alert-info">Thông tin hóa đơn</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>Khách hàng: @customer.CustomerName</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Mã đơn hàng: @cartOrderID.ID</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Số điện thoại: @customer.Phone</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Email: @customer.Email</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Địa chỉ: @customer.Address</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="col-md-12">
+                <thead>
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        foreach (var prod in lstProducts)
+                        {
+                            if (item.ProductID == prod.ID)
+                            {
+                                <tr>
+                                    <td>@prod.Name</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@((item.Quantity * item.Price).Value.ToString("#,##")) đồng</td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <p>Tổng tiền: @tongtien.ToString("#,##") đồng</p>
+        </div>
+    </div>
+</div>
+<input value="Xuất hóa đơn" type="button" class="btn btn-primary" id="btnXuatHoaDon"/>
+<input value="Lưu hóa đơn" type="button" class="btn btn-success" id="btnSaveCartOrder"/>
+
+<script>
+    $('#btnXuatHoaDon').off('click').on('click', function (e) {
+        e.preventDefault();
+        var cartOrder = $('#tblCartOrderInfo').html();
+        XuatDonHang(cartOrder);
+    });
+    $('#btnSaveCartOrder').off('click').on('click', function (e) {
+        e.preventDefault();
+        var thanhtoan = $('#thanhtoan').val();
+        var giaohang = $('#giaohang').val();
+        var idcart = $('#IDcartOrder').val();
+        $.ajax({
+            url: '/ConfirmCartOrder/PayAndShip/',
+            type: 'POST',
+            data: {
+                ttoan: thanhtoan,
+                gihang: giaohang,
+                id: idcart
+            },
+            dataType: 'json',
+            success: function (res) {
+                alert(res);
+                window.location.reload();
+            }
+        });
+    });
+    function XuatDonHang(cartOrder) {
+        var printWindow = window.open('', '', 'height=400, width=800');
+        printWindow.document.write('<html><head><title>Đơn hàng</title>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(cartOrder);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>

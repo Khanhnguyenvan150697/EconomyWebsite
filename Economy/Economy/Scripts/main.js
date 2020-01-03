@@ -62,7 +62,6 @@ function Detail(elem) {
     });
 }
 
-
 //Search dynamically
 $('#txtSearch').on('keyup', function () {
     var txtEnter = $(this).val();
