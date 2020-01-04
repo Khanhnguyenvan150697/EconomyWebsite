@@ -24,7 +24,7 @@ function loadData() {
                 } else {
                     html += '<td><a id="editProd" class="btn btn-warning" style="padding: 12px 20px;">Hết hàng (' + item.Quantity + ')</a > ';
                 }
-                html += '<td><a style = "padding:12px 20px" href="/HomeAdmin/Edit/' + item.ID + '" class="btn btn-success">Edit</a> <a href="#" data-id="' + item.ID + '" style = "padding:12px 20px" class="btn btn-danger" id="deleteProd" onclick="Delete(this);">Delete</a></td>';
+                html += '<td><a style = "padding:12px 20px" href="/HomeAdmin/Edit/' + item.ID + '" class="btn btn-success">Sửa</a> <a href="#" data-id="' + item.ID + '" style = "padding:12px 20px" class="btn btn-danger" id="deleteProd" onclick="Delete(this);">Xóa</a></td>';
                 html += '<tr>';
             });
             $('#tblProducts').html(html);
@@ -62,7 +62,7 @@ function Detail(elem) {
     });
 }
 
-//Search dynamically
+//Search dynamicallys
 $('#txtSearch').on('keyup', function () {
     var txtEnter = $(this).val();
     $('table tr').each(function (result) {
